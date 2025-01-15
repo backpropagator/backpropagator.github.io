@@ -3,6 +3,20 @@
 
 @string{aps = {American Physical Society,}}
 
+@inproceedings{tiwary2025adapt,
+  abbr={TMLR},
+  bibtex_show={true},
+  title={Adapt then Unlearn: Exploring Parameter Space Semantics for Unlearning in Generative Adversarial Networks},
+  author={Tiwary, Piyush and Guha, Atri and Panda, Subhodip and AP, Prathosh},
+  booktitle={Transactions on Machine Learning and Research (TMLR)},
+  year={2025},
+  url={https://openreview.net/forum?id=jAHEBivObO},
+  html={https://openreview.net/forum?id=jAHEBivObO},
+  abstract={Owing to the growing concerns about privacy and regulatory compliance, it is desirable to regulate the output of generative models. To that end, the objective of this work is to prevent the generation of outputs containing undesired features from a pre-trained Generative Adversarial Network (GAN) where the underlying training data set is inaccessible. Our approach is inspired by the observation that the parameter space of GANs exhibits meaningful directions that can be leveraged to suppress specific undesired features. However, such directions usually result in the degradation of the quality of generated samples. Our proposed two-stage method, known as `Adapt-then-Unlearn,' excels at unlearning such undesirable features while also maintaining the quality of generated samples. In the initial stage, we adapt a pre-trained GAN on a set of negative samples (containing undesired features) provided by the user. Subsequently, we train the original pre-trained GAN using positive samples, along with a repulsion regularizer.  This regularizer encourages the learned model parameters to move away from the parameters of the adapted model (first stage) while not degrading the generation quality. We provide theoretical insights into the proposed method. To the best of our knowledge, our approach stands as the first method addressing unlearning within the realm of high-fidelity GANs (such as StyleGAN). We validate the effectiveness of our method through comprehensive experiments, encompassing both class-level unlearning on the MNIST and AFHQ dataset and feature-level unlearning tasks on the CelebA-HQ dataset.},
+  selected={true},
+  preview={atu-bd.png}
+}
+
 @article{10750383,
   abbr={IEEE SPL},
   bibtex_show={true},
