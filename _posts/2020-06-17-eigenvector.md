@@ -5,6 +5,9 @@ date: 2020-06-17 11:12:00-0400
 description: basics of eigenvectors/eigenvalues
 tags: math, basics
 categories: math
+related_posts: false
+toc:
+  sidebar: left
 ---
 
 ## Table of Contents

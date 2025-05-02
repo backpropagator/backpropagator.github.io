@@ -8,7 +8,11 @@ layout: default
         {{ page.title }}
         {% if page.cv_pdf %}
           <a
-            href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"
+            {% if page.cv_pdf contains 'http' %}
+              href="{{ page.cv_pdf }}"
+            {% else %}
+              href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"
+            {% endif %}
             target="_blank"
             rel="noopener noreferrer"
             class="float-right"
@@ -54,7 +58,11 @@ layout: default
         {{ page.title }}
         {% if page.cv_pdf %}
           <a
-            href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"
+            {% if page.cv_pdf contains 'http' %}
+              href="{{ page.cv_pdf }}"
+            {% else %}
+              href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"
+            {% endif %}
             target="_blank"
             rel="noopener noreferrer"
             class="float-right"
