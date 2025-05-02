@@ -1,0 +1,4 @@
+global-bg-color
+global-theme-color
+global-hover-color
+/* Add other variables */

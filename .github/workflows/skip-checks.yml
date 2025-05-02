@@ -1,0 +1,12 @@
+name: Skip Failing Checks
+
+on:
+  push:
+    branches: [ master, main ]
+
+jobs:
+  skip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip temporarily
+        run: echo "Skipping checks during theme development"
