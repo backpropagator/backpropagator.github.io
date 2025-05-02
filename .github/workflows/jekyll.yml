@@ -41,13 +41,12 @@ jobs:
             sed -i 's/{% toc %}/{% comment %}{% toc %}{% endcomment %}/g' _layouts/post.liquid
           fi
       
-      - name: Enable ES6 harmony mode in Jekyll minifier
+      - name: Disable JavaScript minification
         run: |
-          echo "" >> _config.yml
-          echo "# Enable ES6 harmony mode in minifier" >> _config.yml
-          echo "jekyll-minifier:" >> _config.yml
-          echo "  javascript:" >> _config.yml
-          echo "    harmony: true" >> _config.yml
+            echo "" >> _config.yml
+            echo "# Disable JavaScript minification" >> _config.yml
+            echo "jekyll-minifier:" >> _config.yml
+            echo "  compress_javascript: false" >> _config.yml
       
       - name: Install Jekyll and dependencies
         run: |
