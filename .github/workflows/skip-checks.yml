@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Skip temporarily
-        run: echo "Skipping checks during theme development"
+        run: echo "Skipping checks during theme development" 
