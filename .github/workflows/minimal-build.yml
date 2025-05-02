@@ -1,0 +1,98 @@
+name: Minimal Jekyll Build
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Create minimal Gemfile
+        run: |
+          cat > Gemfile.minimal <<EOF
+          source 'https://rubygems.org'
+          
+          gem 'jekyll', '~> 4.3.2'
+          
+          group :jekyll_plugins do
+            gem 'jekyll-feed'
+            gem 'jekyll-sitemap'
+            gem 'jekyll-seo-tag'
+            gem 'jekyll-email-protect'
+            gem 'jekyll-minifier'
+            gem 'jekyll-archives'
+            gem 'jekyll-paginate-v2'
+            # Problematic plugins removed
+          end
+          
+          # Windows and JRuby does not include zoneinfo files
+          gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+          gem 'webrick'
+          EOF
+
+      - name: Create minimal config
+        run: |
+          cat > _config.minimal.yml <<EOF
+          # Site settings
+          title: Your Site Title
+          description: Your site description
+          baseurl: ""
+          url: "https://backpropagator.github.io"
+          
+          # Build settings
+          markdown: kramdown
+          exclude:
+            - assets/jupyter/
+            - "*.ipynb"
+            - Gemfile
+            - Gemfile.lock
+            - vendor
+          
+          # Theme settings
+          theme: null
+          EOF
+          
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --gemfile=Gemfile.minimal
+          
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+      - name: Build Jekyll site
+        run: |
+          BUNDLE_GEMFILE=Gemfile.minimal bundle exec jekyll build --config _config.yml,_config.minimal.yml --trace
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "_site/"
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
