@@ -62,6 +62,7 @@ permissions:
 
 jobs:
   deploy:
+    if: false  # This will prevent the job from running
     # available images: https://github.com/actions/runner-images#available-images
     runs-on: ubuntu-latest
     steps:

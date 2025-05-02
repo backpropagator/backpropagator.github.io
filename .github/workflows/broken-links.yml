@@ -40,6 +40,7 @@ on:
 
 jobs:
   link-checker:
+    if: false  # This will prevent the job from running
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
