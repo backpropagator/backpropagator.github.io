@@ -163,3 +163,10 @@ html[data-theme-setting="light"] {
     display: block;
   }
 }
+
+
+.theme-variables {
+  color: var(--global-bg-color);
+  color: var(--global-theme-color);
+  /* Add other variables */
+}
