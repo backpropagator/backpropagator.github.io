@@ -1,4 +1,4 @@
-name: Build and Deploy Jekyll Site (Fixed)
+name: Build with Jupyter Files Excluded
 
 on:
   push:
@@ -28,25 +28,20 @@ jobs:
           bundler-cache: true
 
       - name: Install ImageMagick
-        run: sudo apt-get update && sudo apt-get install -y imagemagick
+        run: sudo apt-get install -y imagemagick
 
-      - name: Setup Python and Jupyter
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      - run: |
-          python -m pip install --upgrade pip
-          pip install jupyter nbconvert
-          echo "Jupyter location: $(which jupyter)"
-          jupyter --version
-
-      - name: Temporarily disable problematic plugins
+      - name: Delete problematic Jupyter files
         run: |
+          # Remove or rename Jupyter notebooks
+          find . -name "*.ipynb" -exec mv {} {}.disabled \;
+          # Also disable the plugin in _config.yml
           sed -i 's/jekyll-jupyter-notebook/#jekyll-jupyter-notebook/g' _config.yml
-          cat _config.yml | grep -A 5 -B 5 jupyter
+          sed -i '/^\s*- jekyll-jupyter-notebook/d' Gemfile
+          # Create an empty exclude file if it doesn't exist already
+          touch .jekyll-exclude
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --trace --exclude-from .jekyll-exclude
         env:
           JEKYLL_ENV: production
 
