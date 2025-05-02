@@ -4,7 +4,7 @@ permalink: /teaching/
 title: teaching
 description: Materials/Resources for courses.
 nav: true
-nav_order: 5
+nav_order: 6
 ---
 
 <body>
