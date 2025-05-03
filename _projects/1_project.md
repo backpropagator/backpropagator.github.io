@@ -1,8 +1,9 @@
 ---
 layout: page
-title: Adapt then Unlearn - Exploring Parameter Space Semantics for Unlearning in GANs # Updated Title [cite: 1]
-# description: Removing undesired features from pre-trained GANs without accessing original data. # Updated Description [cite: 2]
-img: assets/img/your_main_visual.jpg # Optional: Add a background image path for the portfolio view
+title: "Adapt then Unlearn: Exploring Parameter Space Semantics for Unlearning in GANs"  # Title at top of page
+card_title: "Adapt then Unlearn"  # Title on the card/tile
+description: "An Unlearning framework for GANs by using Parameter Space Semantics."  # Short title on the card/tile
+img: assets/img/publication_preview/atu-bd.png # Optional: Add a background image path for the portfolio view
 importance: 1 # Or adjust as needed
 category: work # Or adjust as needed
 related_publications: true # Assuming you want to link the publication automatically if your theme supports it
@@ -11,169 +12,253 @@ related_publications: true # Assuming you want to link the publication automatic
 Indian Institute of Science, Bengaluru, India</h5>
 
 <style>
-  /* Custom button style that responds to theme changes */
-  .theme-adaptive-btn {
+  /* Custom button styles that respond to theme changes */
+  .theme-btn {
     display: inline-block;
-    font-weight: 400;
+    font-weight: 500;
     text-align: center;
     vertical-align: middle;
-    user-select: none;
+    border-radius: 2rem;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 9999px; /* Pill shape */
-    text-decoration: none !important;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
     margin: 0 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    text-decoration: none !important;
   }
   
-  /* Light theme styling (default) */
-  .theme-adaptive-btn {
+  /* Light theme (default) */
+  .theme-btn {
     color: #fff;
-    background-color: #343a40;
-    border: 1px solid #343a40;
+    background-color: var(--global-theme-color, #343a40);
+    border: 1px solid var(--global-theme-color, #343a40);
   }
   
-  .theme-adaptive-btn:hover {
+  .theme-btn:hover {
     color: #fff;
-    background-color: #23272b;
-    border-color: #1d2124;
+    background-color: var(--global-hover-color, #121212);
+    border-color: var(--global-hover-color, #121212);
   }
   
-  /* Dark theme styling - this adapts to most common dark theme implementations */
-  [data-theme="dark"] .theme-adaptive-btn,
-  .dark-theme .theme-adaptive-btn,
-  .dark .theme-adaptive-btn,
-  html[data-theme="dark"] .theme-adaptive-btn,
-  body.dark .theme-adaptive-btn,
-  .dark-mode .theme-adaptive-btn {
-    color: #212529;
-    background-color: #f8f9fa;
-    border-color: #f8f9fa;
+  /* Dark theme */
+  html[data-theme="dark"] .theme-btn {
+    color: var(--global-bg-color, #fff);
+    background-color: var(--global-theme-color, #343a40);
+    border-color: var(--global-theme-color, #343a40);
   }
   
-  [data-theme="dark"] .theme-adaptive-btn:hover,
-  .dark-theme .theme-adaptive-btn:hover,
-  .dark .theme-adaptive-btn:hover,
-  html[data-theme="dark"] .theme-adaptive-btn:hover,
-  body.dark .theme-adaptive-btn:hover,
-  .dark-mode .theme-adaptive-btn:hover {
-    color: #212529;
-    background-color: #dae0e5;
-    border-color: #d3d9df;
-  }
-  
-  /* For themes that use media queries */
-  @media (prefers-color-scheme: dark) {
-    .theme-adaptive-btn.respect-system {
-      color: #212529;
-      background-color: #f8f9fa;
-      border-color: #f8f9fa;
-    }
-    
-    .theme-adaptive-btn.respect-system:hover {
-      color: #212529;
-      background-color: #dae0e5;
-      border-color: #d3d9df;
-    }
+  html[data-theme="dark"] .theme-btn:hover {
+    color: var(--global-bg-color, #fff);
+    background-color: var(--global-hover-color, #121212);
+    border-color: var(--global-hover-color, #121212);
   }
 </style>
 
-<div class="buttons text-center mb-4">  {% comment %} Center aligns the buttons and adds margin below {% endcomment %}
-    <a href="YOUR_PAPER_LINK_HERE" class="btn btn-dark rounded-pill mx-1" role="button" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-file-alt"></i> Paper {% comment %} fa-file-alt is a good paper icon {% endcomment %}
+<div class="text-center mb-4">
+    <a href="https://openreview.net/forum?id=jAHEBivObO" class="theme-btn" role="button" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-file-pdf"></i> TMLR 
     </a>
-    <a href="https://openreview.net/forum?id=jAHEBivObO" class="btn btn-dark rounded-pill mx-1" role="button" target="_blank" rel="noopener noreferrer">
-        <i class="ai ai-arxiv"></i> arXiv {% comment %} Use Academicons icon {% endcomment %}
+    <a href="https://arxiv.org/abs/2309.14054" class="theme-btn" role="button" target="_blank" rel="noopener noreferrer">
+        <i class="ai ai-arxiv"></i> arXiv
     </a>
-    <a href="https://github.com/atriguha/Adapt_Unlearn" class="btn btn-dark rounded-pill mx-1" role="button" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-github"></i> Code {% comment %} fa-github is the GitHub icon {% endcomment %}
+    <a href="https://github.com/atriguha/Adapt_Unlearn" class="theme-btn" role="button" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> Code
     </a>
 </div>
-
-## Abstract
-
-Owing to the growing concerns about privacy and regulatory compliance, it is desirable to regulate the output of generative models[cite: 1]. To that end, the objective of this work is to prevent the generation of outputs containing undesired features from a pre-trained Generative Adversarial Network (GAN) where the underlying training data set is inaccessible[cite: 2]. Our approach is inspired by the observation that the parameter space of GANs exhibits meaningful directions that can be leveraged to suppress specific undesired features[cite: 3]. However, such directions usually result in the degradation of the quality of generated samples[cite: 4]. Our proposed two-stage method, known as 'Adapt-then-Unlearn', excels at unlearning such undesirable features while also maintaining the quality of generated samples[cite: 5].
-
----
-
-## Overview of 'Adapt-then-Unlearn'
-
-Our proposed method follows a two-stage process:
-
-1.  **Negative Adaptation (Stage 1):** We first adapt the pre-trained GAN using a small set of 'negative' samples provided by the user, which contain the undesired features[cite: 6, 61]. This results in an adapted GAN ($\theta_N$) that primarily generates these negative samples[cite: 116]. We use techniques like Elastic Weight Consolidation (EWC) to handle the few-shot nature of this adaptation[cite: 120, 107].
-2.  **Unlearning (Stage 2):** Subsequently, we train the original pre-trained GAN using 'positive' samples (those without undesired features)[cite: 7]. Crucially, we introduce a repulsion regularizer ($\mathcal{L}_{repulsion}$) that encourages the learned model parameters ($\theta_P$) to move away from the negative parameters ($\theta_N$) obtained in Stage 1, while the standard adversarial loss ensures generation quality is maintained[cite: 8, 63, 134, 137].
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-10 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/your_figure_1a.jpg" title="Adapt-then-Unlearn Method Overview" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Overview of the proposed 'Adapt-then-Unlearn' two-stage method. Stage 1 adapts to negative samples, Stage 2 unlearns using positive samples and a repulsion loss (Adapted from Figure 1a [cite: 44]).
-</div>
-
----
-
-## Key Contributions
-
-* **Novel Two-Stage Unlearning:** Introduces the 'Adapt-then-Unlearn' framework for GANs without needing the original training data[cite: 1, 5, 60].
-* **Parameter Space Manipulation:** Leverages semantic directions in the GAN's parameter space for targeted feature removal[cite: 3, 42].
-* **Quality Preservation:** Employs a repulsion loss during unlearning to maintain the quality of generated samples, avoiding issues seen with simple parameter extrapolation[cite: 8, 51, 53].
-* **Theoretical Foundation:** Provides theoretical insights, showing the method approximates a contrastive-divergence objective beneficial for unlearning[cite: 9, 39, 64, 162].
-* **High-Fidelity GANs:** Demonstrates the first successful application of unlearning to state-of-the-art models like StyleGAN[cite: 9].
-* **Versatile Application:** Validated on both class-level (MNIST, AFHQ) and subtle feature-level (CelebA-HQ) unlearning tasks[cite: 10, 188].
-* **Few-Shot Capable:** Designed to work effectively even with limited user feedback (few negative samples)[cite: 63].
-
----
-
-## Results Showcase
-
-We validated our approach on various datasets and unlearning tasks.
-
-**Feature Unlearning (CelebA-HQ):** Unlearning attributes like 'Bangs', 'Hats', 'Bald', and 'Eyeglasses'. Our method effectively removes the target feature while preserving others, outperforming simple extrapolation which can affect correlated features (e.g., removing 'Bangs' via extrapolation also impacts 'Female' features, while our method does not)[cite: 256, 268, 269, 270].
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/your_celeba_results.jpg" title="CelebA-HQ Feature Unlearning Examples" class="img-fluid rounded z-depth-1" %}
-    </div>
-     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/your_figure_8.jpg" title="CelebA-HQ Sample Generation After Unlearning" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu-bd.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Left: Examples of unlearning features like Bangs, Hats, Baldness, Eyeglasses on CelebA-HQ (Adapted from Figure 3 [cite: 216]). Right: Random samples generated after unlearning different features (Adapted from Figure 8 [cite: 523]).
+    TL:DR: we introduce "Adapt-then-Unlearn," a two-stage approach for removing undesired features from pre-trained GANs without requiring access to the original training data. First, the method adapts the GAN to generate only negative samples (with undesired features), then it retrains the original GAN on positive samples using a repulsion loss that pushes parameters away from the adapted model. This innovative approach successfully unlearns undesired features while maintaining generation quality, working effectively on high-fidelity GANs like StyleGAN for both class-level and feature-level unlearning tasks.
 </div>
 
-**Class Unlearning (AFHQ):** Successfully unlearning entire classes like 'Cats', 'Dogs', or 'Wild' animals.
 
-<div class="row justify-content-sm-center">
-     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/your_afhq_results.jpg" title="AFHQ Class Unlearning Examples" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Examples of unlearning classes (Cats, Dogs, Wild) on the AFHQ dataset (Adapted from Figure 2 [cite: 201]).
+<div style="max-width: 800px; margin: 2rem auto; padding: 20px; background-color: rgba(var(--global-theme-color-rgb), 0.1); border: 2px solid var(--global-theme-color); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <h3 style="text-align: center; font-weight: bold; margin-top: 0; color: var(--global-theme-color);">Abstract</h3>
+  <p style="text-align: justify;">
+Owing to the growing concerns about privacy and regulatory compliance, it is desirable to regulate the output of generative models. To that end, the objective of this work is to prevent the generation of outputs containing undesired features from a pre-trained Generative Adversarial Network (GAN) where the underlying training data set is inaccessible. Our approach is inspired by the observation that the parameter space of GANs exhibits meaningful directions that can be leveraged to suppress specific undesired features. However, such directions usually result in the degradation of the quality of generated samples. Our proposed two-stage method, known as 'Adapt-then-Unlearn,' excels at unlearning such undesirable features while also maintaining the quality of generated samples. In the initial stage, we adapt a pre-trained GAN on a set of negative samples (containing undesired features) provided by the user. Subsequently, we train the original pre-trained GAN using positive samples, along with a repulsion regularizer.  This regularizer encourages the learned model parameters to move away from the parameters of the adapted model (first stage) while not degrading the generation quality. We provide theoretical insights into the proposed method. To the best of our knowledge, our approach stands as the first method addressing unlearning within the realm of high-fidelity GANs (such as StyleGAN). We validate the effectiveness of our method through comprehensive experiments, encompassing both class-level unlearning on the MNIST and AFHQ dataset and feature-level unlearning tasks on the CelebA-HQ dataset. Our code and implementation is available at: <a href="https://github.com/atriguha/Adapt_Unlearn">https://github.com/atriguha/Adapt_Unlearn</a>.
+</p>
 </div>
 
 ---
 
-## Resources
+<h3 style="text-align: center; font-weight: bold;">Parameter Space Semantics</h3>
 
-* **Paper:** [Published in Transactions on Machine Learning Research (02/2025)](https://openreview.net/forum?id=jAHEBivObO) [cite: 1] *(Note: Add actual publication link if available)*
-* **Code:** [GitHub Repository](https://github.com/atriguha/Adapt_Unlearn) [cite: 11, 431]
-* **BibTeX:**
-    ```bibtex
-    @article{tiwary2025adapt,
-      title={Adapt then Unlearn: Exploring Parameter Space Semantics for Unlearning in Generative Adversarial Networks},
-      author={Piyush Tiwary and Atri Guha and Subhodip Panda and Prathosh A.P.},
-      journal={Transactions on Machine Learning Research},
-      year={2025},
-      url={https://openreview.net/forum?id=jAHEBivObO},
-      note={Published 02/2025}
-    }
-    ```
+<div id="parameter-space-figure" class="row justify-content-center">
+  <div class="col-sm-8" style="width: 65%; margin: 0 auto;">
+    <div style="position: relative; overflow: hidden;">
+      <div style="margin-top: -40px;     /* Top trim */
+                  margin-right: -90px;   /* Right trim */
+                  margin-bottom: -10px;  /* Bottom trim */
+                  margin-left: -60px;">  
+        {% include figure.liquid loading="eager" 
+          path="assets/img/publication_preview/atu_tmlr/transition_teaser.png" 
+          title="Transition teaser" 
+          class="img-fluid" 
+          style="transform: scale(1.4); transform-origin: center;" %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="caption">
+    Figure 1: Illustrating linear interpolation and extrapolation in parameter space for unlearning undesired features. We observe that in the extrapolation region, undesired features are suppressed, but the quality of generated samples deteriorates.
+</div>
+
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    <p>
+      Our approach hinges in realizing interpretable and meaningful directions within the parameter space of a pre-trained GAN generator, as discussed in {% cite cherepkov2021navigating ilharco2023editing -f references %}. In particular, the first stage of the proposed method leads to adapted parameters that exclusively generate negative samples. While the parameters of the original pre-trained generator generate both positive as well as negative samples. Hence, the difference between the parameters of adapted generator and the paramters of original generator can be interpreted as the direction in parameter space that leads to a decrease in the generation of negative samples. Given this, it is sensible to move away from the original parameters in this direction to further reduce the generation of negative samples. This observation is shown in <a href="#parameter-space-figure">Figure 1</a>. However, it's worth noting that such extrapolation doesn't ensure the preservation of other image features' quality. In fact, deviations too far from the original parameters may hamper the smoothness of the latent space, potentially leading to a deterioration in the overall generation quality (see last column of <a href="#parameter-space-figure">Figure 1</a>).
+    </p>
+  </div>
+</div>
 
 ---
 
-You can add more sections, figures, or details as needed, following the Bootstrap grid system explained in your original template code. Remember to replace the placeholder image paths!
+<h3 style="text-align: center; font-weight: bold;">Proposed Methodology</h3>
+
+#### Overview of the Proposed Method
+
+<div id="block-diagram" class="row align-items-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu_tmlr/atu-bd.png" title="block-diagram" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu_tmlr/mog_exp.png" title="MoG-Experiment" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 2: (left) Block diagram of the proposed method: Stage-1: Negative Adaptation of the GAN to negative samples received from user feedback and Stage-2: Unlearning of the original GAN using the positive samples with a repulsion loss. (right) An example of results obtained using our method on Mixture of Gaussian (MoG) dataset, where we unlearn two centers provided in negative samples.
+</div>
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    <p>
+      Our proposed method follows a two-stage process:
+        <ol>
+            <li><strong>Stage 1 - Negative Adaptation:</strong> We first adapt the pre-trained GAN (\(\theta_G\)) using a small set of 'negative' samples provided by the user, which contain the undesired features. This results in an adapted GAN (\(\theta_N\)) that primarily generates these negative samples. We use techniques like Elastic Weight Consolidation (EWC) to handle the few-shot nature of this adaptation.
+            </li>
+        </ol>
+    </p>
+
+    $$
+    \begin{align}
+        \theta_N, \phi_N = \arg\min_{\theta}\max_{\phi}~ \mathcal{L}_{adv} + \gamma\mathcal{L}_{adapt}
+    \end{align}
+    $$
+
+    $$
+    \begin{align}
+        \text{where,}~~~
+        \mathcal{L}_{adv} = \mathbb{E}_{\mathbf{x}\sim p_{N}(x)}\left[\log D_\phi(\mathbf{x})\right] + \mathbb{E}_{\mathbf{z}\sim p_{Z}(z)}\left[\log (1 - D_\phi(G_\theta(\mathbf{z})))\right]
+    \end{align}
+    $$
+
+    $$
+    \begin{align}
+        \mathcal{L}_{adapt} = \lambda \sum_{i}F_i(\theta_i - \theta_{G,i}), \quad
+        F = \mathbb{E}\left[ -\frac{\partial^2}{\partial\theta_G^2}\mathcal{L}_{\theta_G}(\mathcal{S}_n) \right]
+    \end{align}
+    $$
+
+    <p>
+        <ol start="2">
+            <li><strong>Stage 2 - Unlearning:</strong> Subsequently, we train the original pre-trained GAN using 'positive' samples (those without undesired features). Crucially, we introduce a repulsion regularizer (\(\mathcal{L}_{\text{repulsion}}\)) that encourages the learned model parameters (\(\theta_P\)) to move away from the negative parameters (\(\theta_N\)) obtained in Stage 1, while the standard adversarial loss ensures generation quality is maintained.</li>
+        </ol>
+    </p>
+    $$
+    \begin{align}
+        \theta_P, \phi_P &= \arg\underset{\theta}{\min}~\underset{\phi}{\max}~ \mathcal{L}_{adv}^{'} + \gamma\mathcal{L}_{repulsion} \label{eq:objective_stage2} \\
+        \text{where, }\mathcal{L}_{adv}^{'} &= \underset{\mathbf{x}\sim p_{G\backslash N}(x)}{\mathbb{E}}\left[\log D_\phi(\mathbf{x})\right] +  \underset{\mathbf{z}\sim p_{Z}(z)}{\mathbb{E}}\left[\log (1 - D_\phi(G_\theta(\mathbf{z})))\right] \label{eq:l_adv_stage2}
+    \end{align}
+    $$
+  </div>
+</div>
+
+
+#### Choice of Repulsion Loss
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    <p>
+      The repulsion loss (\(\mathcal{L}_{\text{repulsion}}\)) should encourage the learned parameter to traverse away from \(\theta_N\) obtained from the negative adaptation stage. In general, one can use any function of \(\|\theta - \theta_N\|_2^2\) that has a global maxima at \(\theta_N\) as a choice for repulsion loss. In this work, we explore three different choices for the repulsion loss:
+        $$
+            \begin{align}
+                \mathcal{L}_{repulsion} = 
+                \begin{cases}
+                    \mathcal{L}_{repulsion}^{\text{IL2}} = \frac{1}{||\theta - \theta_N||_2^2} & \text{(Inverse $\ell_2$ loss)} \\
+                    \mathcal{L}_{repulsion}^{\text{NL2}} = - ||\theta - \theta_N||_2^2 & \text{(Negative $\ell_2$ loss)} \\
+                    \mathcal{L}_{repulsion}^{\text{EL2}} = \exp(-\alpha||\theta - \theta_N||_2^2) & \text{(Exponential negative $\ell_2$ loss)}
+                \end{cases}
+            \label{eq:repulsion-loss}
+            \end{align}
+        $$
+    </p>
+  </div>
+</div>
+
+---
+
+<h3 style="text-align: center; font-weight: bold;">Results</h3>
+
+<div id="block-diagram" class="row align-items-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu_tmlr/mnist_table.png" title="mnist-result" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div id="block-diagram" class="row align-items-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu_tmlr/mnist_results.png" title="mnist-result" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 3: Results of Unlearning different classes on MNIST dataset.
+</div>
+
+<div id="block-diagram" class="row align-items-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu_tmlr/afhq_table.png" title="afhq-result" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div id="block-diagram" class="row align-items-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu_tmlr/afhq_results.png" title="afhq-result" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 4: Results of Unlearning different classes on AFHQ dataset.
+</div>
+
+<div id="block-diagram" class="row align-items-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu_tmlr/celebahq_table.png" title="celebahq-result" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div id="block-diagram" class="row align-items-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/publication_preview/atu_tmlr/celbahq_results.png" title="celebahq-result" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Figure 5: Results of Unlearning different features on CelebaHQ dataset.
+</div>
+
+
+---
+
+
+If you find our work useful, please consider citing our paper:
+
+```bibtex
+@article{tiwary2025adapt,
+    title={Adapt then Unlearn: Exploring Parameter Space Semantics for Unlearning in Generative Adversarial Networks},
+    author={Piyush Tiwary and Atri Guha and Subhodip Panda and Prathosh A.P.},
+    journal={Transactions on Machine Learning Research},
+    year={2025},
+    url={https://openreview.net/forum?id=jAHEBivObO},
+    note={Published 02/2025}
+}
+```
