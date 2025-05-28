@@ -1,10 +1,11 @@
 ---
 layout: page
-title: project 3 with very long name
-description: a project that redirects to another website
-img: assets/img/7.jpg
-redirect: https://unsplash.com
-importance: 3
+title: "LangDAug: Langevin Data Augmentation for Multi-Source Domain Generalization in Medical Image Segmentation"
+card_title: "LangDAug"  # Title on the card/tile
+description: "Langevin Data Augmentation for Multi-Source Domain Generalization in Medical Image Segmentation."
+img: assets/img/publication_preview/langdaug.jpeg
+redirect: https://backpropagator.github.io/LangDAug/
+importance: 1
 category: work
 ---
 
