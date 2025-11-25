@@ -20,7 +20,7 @@ a.btncv {
   padding-bottom: 0.25rem;
   text-decoration: none;
   font-weight: 400;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;
@@ -38,13 +38,13 @@ a.btncv:hover {
  *****************************/
 
 p.location {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   white-space: nowrap;
 }
 
 i.iconlocation {
   color: var(--global-theme-color);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
 }
 
 i.iconinstitution {
@@ -55,7 +55,7 @@ i.iconinstitution {
 
 i.icondepartment {
   color: var(--global-theme-color);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   margin-right: 0.3rem;
 }
 
@@ -64,7 +64,7 @@ table.institution {
 }
 
 td.department {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
 }
 
 div.container-links {
@@ -115,29 +115,29 @@ td.list-group-category {
 }
 
 td.list-group-category-icon {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--global-theme-color);
   width: 1.4rem;
   padding-right: 0.4rem;
 }
 
 td.list-group-name {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
 }
 
 td.list-group-level {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   padding-left: 0.5rem;
 }
 
 td.list-group-school {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   padding-left: 0.5rem;
   text-align: center;
 }
 
 p.list-group-time {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   padding-left: 0.5rem;
 }
 

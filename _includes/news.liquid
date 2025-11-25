@@ -1,10 +1,35 @@
 <div class="news">
-  {% if site.news != blank %}
+  {% if site.data.news %}
+    {%comment%} Use YAML data file if it exists {% endcomment %}
+    {% assign news_items = site.data.news %}
+    {% assign news_size = news_items | size %}
+    <div
+      class="table-responsive news-scrollable"
+      {% if include.limit and site.announcements.scrollable and news_size > 3 %}
+        style="max-height: 400px; overflow-y: auto; scroll-behavior: smooth;"
+      {% endif %}
+    >
+      <table class="table table-sm table-borderless">
+        {% if include.limit and site.announcements.limit %}
+          {% assign news_limit = site.announcements.limit %}
+        {% else %}
+          {% assign news_limit = news_size %}
+        {% endif %}
+        {% for item in news_items limit: news_limit %}
+          <tr>
+            <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
+            <td>{{ item.content | markdownify | remove: '<p>' | remove: '</p>' | emojify }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% elsif site.news != blank %}
+    {%comment%} Fallback to markdown files in _news folder {% endcomment %}
     {% assign news_size = site.news | size %}
     <div
-      class="table-responsive"
+      class="table-responsive news-scrollable"
       {% if include.limit and site.announcements.scrollable and news_size > 3 %}
-        style="max-height: 60vw"
+        style="max-height: 400px; overflow-y: auto; scroll-behavior: smooth;"
       {% endif %}
     >
       <table class="table table-sm table-borderless">

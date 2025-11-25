@@ -1,0 +1,73 @@
+# News Items
+# Add your news items here in reverse chronological order (newest first)
+# Each item should have a date and content field
+
+- date: 2025-07-28
+  content: "I have joined [Google DeepMind](https://deepmind.google/) as a Student Researcher!"
+
+- date: 2025-05-02
+  content: "Our paper '[LangDAug: Langevin Data Augmentation for Multi-Source Domain Generalization in Medical Image Segmentation](https://openreview.net/forum?id=LB5F02kwAv)' is accepted at [International Conference on Machine Learning (ICML) 2025](https://icml.cc/)."
+
+- date: 2025-01-14
+  content: "Our paper '[Adapt then Unlearn: Exploring Parameter Space Semantics for Unlearning in Generative Adversarial Networks](https://openreview.net/forum?id=jAHEBivObO)' is now accepted at [Transactions on Machine Learning Research (TMLR)](https://jmlr.org/tmlr/)."
+
+- date: 2024-12-01
+  content: "Serving as Reviewer for **CVPR 2025**, **ICML 2025**."
+
+- date: 2024-11-11
+  content: "Our paper '[SoLAD: Sampling over Latent Adapter for Few Shot Generation](https://ieeexplore.ieee.org/document/10750383)' is now accepted at [IEEE Signal Processing Letters](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=97)."
+
+- date: 2024-10-01
+  content: "Serving as Reviewer for **ICLR 2025**."
+
+- date: 2024-08-04
+  content: "The following paper is now accepted at [IEEE Wireless Communication Letters](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=5962382) [h5-Index: 98, IF: 4.6]: [A Lightweight $$\\alpha-\\mu$$ Fading Environment based Localization towards Edge Implementation](https://ieeexplore.ieee.org/document/10623871)."
+
+- date: 2024-05-15
+  content: "Serving as Reviewer for **NeurIPS 2025**."
+
+- date: 2024-05-13
+  content: "Joined [Adobe Research](https://research.adobe.com/careers/bangalore/) as a Research Ph.D. Intern for Summer 2024."
+
+- date: 2024-04-26
+  content: "The following paper is now accepted at [Conference on Uncertainity in Artificial Intelligence (UAI) 2024](https://www.auai.org/uai2024/) [h5-Index: 50]: [Bayesian Pseudo-Coresets via Contrastive Divergence](https://arxiv.org/abs/2303.11278)."
+
+- date: 2023-12-15
+  content: "The following paper is now accepted at [IEEE Transaction on Network Science and Engineering](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6488902) [h5-Index: 62, IF: 6.6]: [Bessel Function Mixture Model for Localization in Generalized $$\\eta-\\mu$$ IoT Fading Environment](https://ieeexplore.ieee.org/document/10356779)."
+
+- date: 2023-11-13
+  content: "The following paper is now accepted at [Medical Image Analysis](https://www.sciencedirect.com/journal/medical-image-analysis) [h5-Index: 103, IF: 10.9]: [Cycle Consistent Twin Energy-Based Models for Image-to-Image Translation](https://www.sciencedirect.com/science/article/pii/S1361841523002918?dgcid=author)."
+
+- date: 2023-01-21
+  content: "The following two papers got accepted: (1) [Few-shot Cross-domain Image generation via Inference-time Latent Code Learning](https://openreview.net/forum?id=sCYXJr3QJM8) at **ICLR 2023** [h5-Index: 286] and (2) [Minority Oversampling for Imbalanced data via Class-Preserving Regularised Autoencoders](https://proceedings.mlr.press/v206/mondal23a.html) at **AISTATS 2023** [h5-Index: 85]"
+
+- date: 2022-06-12
+  content: "Journal titled \"FadeLoc: Smart Device Localization for Generalized $$\\kappa-\\mu$$ Faded IoT Environment\" accepted at [IEEE Transaction on Signal Processing](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=78). [h5-Index: 99]"
+
+- date: 2021-08-19
+  content: "Journal titled \"Towards Establishing a Research Lineage via Identification of Significant Citations\" accepted at [Special Issue of Quantitative Science Studies (QSS) on \"Scientific Knowledge Graphs and Research Impact Assessment\"](https://skg.kmi.open.ac.uk/QSS-SI-SKG-AIMinScience/CfP.pdf)."
+
+- date: 2021-01-08
+  content: "Paper titled \"Towards Establishing a Research Lineage via Identification of Significant Citations\" accepted at [20th International Conference on Distributed Computing and Networking (ICDCN 2021)](https://icdcn2021.github.io/). [h5-Index: 18]"
+
+- date: 2020-12-23
+  content: "Journal titled \"Adaptive Mini-Batch Gradient Ascent based Localization for Indoor IoT Networks under Rayleigh Fading Conditions.\" accepted at [IEEE Internet of Things Journal](https://ieee-iotj.org/). [IF: 9.936, h5-Index: 122]"
+
+- date: 2020-12-05
+  content: "Paper Accepted at [13th International Conference on COMmunication Systems & NETworkS](https://www.comsnets.org/accepted_posters.html). [h5-Index: 21]"
+
+- date: 2020-08-05
+  content: "Received acceptance to participate in the **AI Summer School** hosted by **Google Research India**."
+
+- date: 2020-05-04
+  content: "Paper titled \"Residual Neural Networks for Heterogeneous Smart Device Localization in IoT Networks\" accepted at the [29th International Conference on Computer Communications and Networks (ICCCN 2020)](http://www.icccn.org/icccn20/index.html), Honolulu, Hawaii, USA [h5-Index: 28]"
+
+- date: 2020-05-01
+  content: "Made a [RoadMap](https://piyushtiwary31.gitbook.io/ml-roadmap/) for Beginners to get started with Machine Learning. Thanks [Nischal](https://github.com/Nish-19) & [Joshika](https://github.com/joshika1087) for their Contribution in this."
+
+- date: 2018-09-18
+  content: "Paper Accepted at [20th International Conference of Discrete Computing and Networking](https://events.csa.iisc.ac.in/icdcn2019/index.htm). [h5-Index: 18]"
+
+# Add more news items below following the same format:
+# - date: YYYY-MM-DD
+#   content: "Your news content here with [links](url) if needed"

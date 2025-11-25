@@ -27,8 +27,15 @@ In an earlier life, I worked on solving the problem of localization in indoor en
 \\
 If you are interested in discussing about theoretical interpretation of deep learning models in general, please ping me I am always excited to have these sorts of discussion.
 
-<u>Favourite Quote</u>: "कौन कहता है कि आसमां में सुराख हो नहीं सकता, एक पत्थर तो तबीयत से उछालो यारों!" ~Dushyant Kumar \\
-(Translation: Who says you can't make a hole in the sky, my dear friend atleast throw a stone by heart!)
+
+<div class="quote-box">
+  <i class="fas fa-quote-right quote-watermark"></i>
+  <span class="quote-label">Favourite Quote</span>
+  <div class="quote-content">
+    <p class="quote-text-hindi">"कौन कहता है कि आसमां में सुराख हो नहीं सकता, एक पत्थर तो तबीयत से उछालो यारों!" <span class="quote-author">Dushyant Kumar</span></p>
+    <p class="quote-translation">(Translation: Who says you can't make a hole in the sky, my dear friend atleast throw a stone by heart!)</p>
+  </div>
+</div>
 
 <html>
 <head>

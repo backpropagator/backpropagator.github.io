@@ -40,4 +40,9 @@
 <!-- Jupyter Open External Links New Tab -->
 <script defer src="{{ '/assets/js/jupyter_new_tab.js' | relative_url | bust_file_cache }}"></script>
 
+<!-- Footer Auto-hide on Scroll -->
+{% if site.footer_fixed %}
+  <script defer src="{{ '/assets/js/footer-autohide.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}
+
 {% assign site.test-library.url = site.test-library.url | append: 'teste' %}

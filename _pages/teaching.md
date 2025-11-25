@@ -10,12 +10,12 @@ nav_order: 6
 <body>
   <!-- Content -->
   <div class="content">
-      <h5> Institute of Smart Structures and Systems (ISSS)   </h5>
+      <h4 style="font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem">Institute of Smart Structures and Systems (ISSS)</h4>
   <div class="card mt-3 #FFFFF">
     <div class="p-3">
       <div class="row">
         <div class="col-sm-10">
-          <h5 class="font-weight-bold">Generative Learning: From VAEs to Diffusion Models</h5>
+          <h5 class="font-weight-bold" style="font-size: 1.05rem">Generative Learning: From VAEs to Diffusion Models</h5>
         </div>
         <!-- <div class="col-sm-2 text-left text-sm-right">
         <a href="https://catalog.clemson.edu/preview_course_nopop.php?catoid=16&coid=65280" class="badge font-weight-bold purple darken-4 text-uppercase align-middle">
@@ -23,8 +23,8 @@ nav_order: 6
           </a>
         </div> -->
       </div>
-      <h6 class="font-italic mt-2 mt-sm-0">Spring 2025: Instructor</h6>
-      <ul class="card-text font-weight-light list-group list-group-flush" style="list-style-type:none;">
+      <h6 class="font-italic mt-2 mt-sm-0" style="font-size: 0.9rem; font-weight: normal">Spring 2025: Instructor</h6>
+      <ul class="card-text font-weight-light list-group list-group-flush" style="list-style-type:none; font-size: 0.9rem">
         <li>An introductory course to learn the fundamentals of generative modelling. The course will start from basics of EM algorithm, and will go all the way till Diffusion Models. The underlying idea is to connect seemingly disconnected topics like VAEs and Diffusion Models through a unified theory.</li>
         <hr/>
         <li> <a href="https://www.youtube.com/playlist?list=PLlZRoE1e4FG7Ax89tyiPpBRByN6QR-TZV" target="_blank"><b>Lectures</b></a>.</li>
@@ -33,12 +33,12 @@ nav_order: 6
     </div>
 <hr>
   <div class="content">
-      <h5> National Programme on Technology Enhanced Learning (NPTEL)   </h5>
+      <h4 style="font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem">National Programme on Technology Enhanced Learning (NPTEL)</h4>
   <div class="card mt-3 #FFFFF">
     <div class="p-3">
       <div class="row">
         <div class="col-sm-10">
-          <h5 class="font-weight-bold">Probability and Statistics</h5>
+          <h5 class="font-weight-bold" style="font-size: 1.05rem">Probability and Statistics</h5>
         </div>
         <div class="col-sm-2 text-left text-sm-right">
         <a href="https://catalog.clemson.edu/preview_course_nopop.php?catoid=16&coid=65280" class="badge font-weight-bold purple darken-4 text-uppercase align-middle">
@@ -46,8 +46,8 @@ nav_order: 6
           </a>
         </div>
       </div>
-      <h6 class="font-italic mt-2 mt-sm-0">Spring 2024: Teaching Assistant</h6>
-      <ul class="card-text font-weight-light list-group list-group-flush" style="list-style-type:none;">
+      <h6 class="font-italic mt-2 mt-sm-0" style="font-size: 0.9rem; font-weight: normal">Spring 2024: Teaching Assistant</h6>
+      <ul class="card-text font-weight-light list-group list-group-flush" style="list-style-type:none; font-size: 0.9rem">
         <li>Statistical reasoning is vital across disciplines like sciences and engineering, supporting advanced research in fields like electronics, biology, and information science. Early exposure to probability and statistics is crucial for students in these fields. This course introduces undergraduates and postgraduates to the subject, offering a comprehensive yet accessible treatment of theory, with concepts illustrated through examples and practical problems.</li>
         <hr/>
         <li> <a href="https://onlinecourses.nptel.ac.in/noc24_ma39/preview" target="_blank"><b>Course Website</b></a>.</li>
@@ -61,7 +61,7 @@ nav_order: 6
     <div class="p-3">
       <div class="row">
         <div class="col-sm-10">
-          <h5 class="font-weight-bold">Deep Learning</h5>
+          <h5 class="font-weight-bold" style="font-size: 1.05rem">Deep Learning</h5>
         </div>
         <div class="col-sm-2 text-left text-sm-right">
         <a href="https://catalog.clemson.edu/preview_course_nopop.php?catoid=16&coid=65280" class="badge font-weight-bold purple darken-4 text-uppercase align-middle">
@@ -69,8 +69,8 @@ nav_order: 6
           </a>
         </div>
       </div>
-      <h6 class="font-italic mt-2 mt-sm-0">Spring 2023: Teaching Assistant</h6>
-      <ul class="card-text font-weight-light list-group list-group-flush" style="list-style-type:none;">
+      <h6 class="font-italic mt-2 mt-sm-0" style="font-size: 0.9rem; font-weight: normal">Spring 2023: Teaching Assistant</h6>
+      <ul class="card-text font-weight-light list-group list-group-flush" style="list-style-type:none; font-size: 0.9rem">
         <li>Deep Learning has garnered significant attention recently, utilized successfully by tech giants like Google, Microsoft, and Facebook for solving various Computer Vision and Natural Language Processing problems. This course covers key Deep Learning concepts, including feedforward neural networks, convolutional neural networks, recurrent neural networks, and attention mechanisms. It also explores optimization algorithms such as Gradient Descent, Nesterov Accelerated Gradient Descent, Adam, AdaGrad, and RMSProp commonly used in training deep neural networks. By course completion, students will gain knowledge of deep architectures for addressing Vision and NLP tasks.</li>
         <hr/>
         <li> <a href="https://onlinecourses.nptel.ac.in/noc23_cs24/course" target="_blank"><b>Course Website</b></a>.</li>
@@ -81,12 +81,12 @@ nav_order: 6
     </div>
 <hr>
   <div class="content">
-    <h5>Indian Institute of Science   </h5>
+    <h4 style="font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem">Indian Institute of Science</h4>
     <div class="card mt-3 #FFFFF">
       <div class="p-3">
         <div class="row">
           <div class="col-sm-10">
-            <h5 class="font-weight-bold">Advanced Deep Representation Learning</h5>
+            <h5 class="font-weight-bold" style="font-size: 1.05rem">Advanced Deep Representation Learning</h5>
           </div>
           <div class="col-sm-2 text-left text-sm-right">
           <a href="https://catalog.clemson.edu/preview_course_nopop.php?catoid=16&coid=65280" class="badge font-weight-bold purple darken-4 text-uppercase align-middle">
@@ -94,8 +94,8 @@ nav_order: 6
             </a>
           </div>
         </div>
-        <h6 class="font-italic mt-2 mt-sm-0">Fall 2022, 2023, 2024: Teaching Assistant</h6>
-        <ul class="card-text font-weight-light list-group list-group-flush" style="list-style-type:none;">
+        <h6 class="font-italic mt-2 mt-sm-0" style="font-size: 0.9rem; font-weight: normal">Fall 2022, 2023, 2024: Teaching Assistant</h6>
+        <ul class="card-text font-weight-light list-group list-group-flush" style="list-style-type:none; font-size: 0.9rem">
           <li>This course contains discussions on cutting-edge topics on Advanced Deep learning. Given their practical applicability, it is imperative that the algorithms discussed during the lectures are duly implemented  (as assignments) by the students.</li>
           <hr/>
           <li> <a href="https://sites.google.com/view/prathosh/courses-august-2022/advanced-deep-rep-learning?authuser=0" target="_blank"><b>Course Syllabus</b></a>.</li>
