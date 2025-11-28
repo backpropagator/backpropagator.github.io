@@ -1,0 +1,252 @@
+---
+layout: default
+---
+
+<div class="timeline-page">
+  <div class="post">
+    <header class="post-header">
+      <h1 class="post-title text-center" style="font-weight: bold;">{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="post-description text-center">{{ page.description }}</p>
+      {% endif %}
+    </header>
+
+    <article>
+      <div class="timeline-container">
+        <div class="timeline-wrapper">
+          <!-- Vertical timeline line -->
+          <div class="timeline-line"></div>
+
+          <!-- Timeline items -->
+          {{ content }}
+
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- Timeline Scrubber/Minimap -->
+<div class="timeline-scrubber">
+  <div class="scrubber-progress"></div>
+  <div class="scrubber-items"></div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // Optimized scroll handler with requestAnimationFrame
+  let ticking = false;
+  let rafId = null;
+
+  // Dynamic timeline coloring based on scroll position
+  // Starts 100% blue, depletes from TOP as you scroll down
+  function updateTimelineProgress() {
+    const timelineWrapper = document.querySelector('.timeline-wrapper');
+    const timelineLine = document.querySelector('.timeline-line');
+    const scrubberProgress = document.querySelector('.scrubber-progress');
+    const backToTopBtn = document.querySelector('.back-to-top');
+    const scrubber = document.querySelector('.timeline-scrubber');
+
+    if (!timelineWrapper || !timelineLine) return;
+
+    const wrapperRect = timelineWrapper.getBoundingClientRect();
+    const wrapperTop = wrapperRect.top;
+    const wrapperBottom = wrapperRect.bottom;
+    const viewportHeight = window.innerHeight;
+    const wrapperHeight = timelineWrapper.offsetHeight;
+
+    // Calculate what percentage has been scrolled
+    let scrollPercentage;
+    if (wrapperTop > 0) {
+      scrollPercentage = 0;
+    } else if (wrapperBottom < viewportHeight) {
+      scrollPercentage = 100;
+    } else {
+      const scrolled = -wrapperTop;
+      const totalScrollable = wrapperHeight - viewportHeight;
+      scrollPercentage = Math.max(0, Math.min(100, (scrolled / totalScrollable) * 100));
+    }
+
+    // Color depletes from TOP with smooth transition
+    timelineLine.style.background = `linear-gradient(to bottom, var(--global-divider-color) 0%, var(--global-divider-color) ${scrollPercentage}%, var(--global-theme-color) ${scrollPercentage}%, var(--global-theme-color) 100%)`;
+
+    // Update scrubber progress
+    if (scrubberProgress) {
+      scrubberProgress.style.height = scrollPercentage + '%';
+    }
+
+    // Show/hide back to top button
+    if (backToTopBtn) {
+      if (scrollPercentage > 20) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+
+    // Show/hide scrubber
+    if (scrubber) {
+      if (scrollPercentage > 10 && scrollPercentage < 95) {
+        scrubber.classList.add('visible');
+      } else {
+        scrubber.classList.remove('visible');
+      }
+    }
+
+    // Update current item in scrubber
+    updateScrubberCurrentItem();
+
+    ticking = false;
+  }
+
+  // Request animation frame wrapper for scroll
+  function requestTick() {
+    if (!ticking) {
+      rafId = requestAnimationFrame(updateTimelineProgress);
+      ticking = true;
+    }
+  }
+
+  // Expandable/collapsible details sections with ARIA and keyboard support
+  function initializeDetailsToggles() {
+    const toggles = document.querySelectorAll('.details-toggle');
+
+    toggles.forEach((toggle, index) => {
+      const detailsSection = toggle.closest('.activity-details');
+      const content = detailsSection.querySelector('.details-content');
+      const contentId = 'details-content-' + index;
+
+      // Add ARIA attributes
+      content.id = contentId;
+      toggle.setAttribute('role', 'button');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-controls', contentId);
+      toggle.setAttribute('tabindex', '0');
+
+      // Click handler
+      const toggleDetails = function() {
+        const isExpanded = toggle.classList.contains('expanded');
+
+        // Toggle expanded class
+        toggle.classList.toggle('expanded');
+        content.classList.toggle('expanded');
+        detailsSection.classList.toggle('expanded');
+
+        // Update ARIA attribute
+        toggle.setAttribute('aria-expanded', !isExpanded);
+      };
+
+      toggle.addEventListener('click', toggleDetails);
+
+      // Keyboard support (Enter and Space)
+      toggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleDetails();
+        }
+      });
+    });
+  }
+
+  // Back to top functionality
+  function initializeBackToTop() {
+    const backToTopBtn = document.querySelector('.back-to-top');
+
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }
+
+  // Timeline scrubber functionality
+  function initializeTimelineScrubber() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const scrubberContainer = document.querySelector('.scrubber-items');
+
+    if (!scrubberContainer || timelineItems.length === 0) return;
+
+    // Create scrubber dots for each timeline item
+    timelineItems.forEach((item, index) => {
+      const dot = document.createElement('div');
+      dot.className = 'scrubber-dot';
+      dot.dataset.index = index;
+
+      // Get the time label for tooltip
+      const timeLabel = item.querySelector('.timeline-time');
+      const timeText = timeLabel ? timeLabel.textContent.trim() : `Item ${index + 1}`;
+
+      const tooltip = document.createElement('div');
+      tooltip.className = 'scrubber-tooltip';
+      tooltip.textContent = timeText;
+      dot.appendChild(tooltip);
+
+      // Position the dot based on item position
+      const itemPosition = (index / (timelineItems.length - 1)) * 100;
+      dot.style.top = itemPosition + '%';
+
+      // Click to scroll to item
+      dot.addEventListener('click', function() {
+        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      scrubberContainer.appendChild(dot);
+    });
+  }
+
+  // Update which item is current in the scrubber
+  function updateScrubberCurrentItem() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const scrubberDots = document.querySelectorAll('.scrubber-dot');
+    const viewportMiddle = window.innerHeight / 2;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    timelineItems.forEach((item, index) => {
+      const rect = item.getBoundingClientRect();
+      const itemMiddle = rect.top + rect.height / 2;
+      const distance = Math.abs(itemMiddle - viewportMiddle);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    // Update scrubber dots
+    scrubberDots.forEach((dot, index) => {
+      if (index === closestIndex) {
+        dot.classList.add('current');
+      } else {
+        dot.classList.remove('current');
+      }
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeDetailsToggles();
+    initializeBackToTop();
+    initializeTimelineScrubber();
+    updateTimelineProgress();
+  });
+
+  // Update on scroll with passive listeners for better performance
+  window.addEventListener('scroll', requestTick, { passive: true });
+  window.addEventListener('resize', requestTick, { passive: true });
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', function() {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+    }
+  });
+</script>

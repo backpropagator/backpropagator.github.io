@@ -21,11 +21,7 @@ social: false  # includes social icons at the bottom of the page
 
 Hi! I am a Research Scholar at Indian Institute of Science (IISc) Bangalore, working under the guidance of [Dr. Prathosh A.P.](https://sites.google.com/view/prathosh/home?authuser=0). \\
 \\
- I completed my B.Tech in Electrical Engineering from Indian Institute of Technology Patna (IIT Patna). I aspire to become a rigorous applied probabilist. In that pursuit I keep taking a lot of courses. Further, I enjoy working on various information theoretic quantities in deep learning. Some of the areas that excite me are - bayesian learning, energy-based models, diffusion models. \\
- \\
-In an earlier life, I worked on solving the problem of localization in indoor environment using deep learning methods. I was blessed to have [Dr. Sudhir Kumar](https://sites.google.com/site/ksudhiriitk/) (IIT Patna) as guide during my B.Tech. I worked for about 3.5 years under him. In the course of my bachelors, I also had opportunity to collaborate with [Dr. Sajal K. Das](https://sites.google.com/a/mst.edu/sdas/home) and [Dr. Moustafa Youssef](https://scholar.google.com/citations?user=r6DUyxsAAAAJ&hl=en). \\
-\\
-If you are interested in discussing about theoretical interpretation of deep learning models in general, please ping me I am always excited to have these sorts of discussion.
+I completed my B.Tech in Electrical Engineering from Indian Institute of Technology Patna (IIT Patna). I am interested in diffusion models and recently, its intersection with RL. Please see <a href="/what-i-am-doing">what-i-am-doing</a> to know my current pursuits. \\
 
 
 <div class="quote-box">
