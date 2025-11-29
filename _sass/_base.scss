@@ -4,11 +4,22 @@
 
 // Typography
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: $font-family-sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   letter-spacing: 0.01em;
+}
+
+// Respect user's motion preferences
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 h1,
@@ -21,43 +32,56 @@ h6 {
 }
 
 h1 {
-  font-size: 2.75rem;
+  font-size: 3rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
 }
 
 h2 {
   font-size: 2.25rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+  margin-top: 2rem;
 }
 
 h3 {
   font-size: 1.75rem;
   font-weight: 600;
-  line-height: 1.4;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
 }
 
 h4 {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.4;
+  margin-bottom: 0.875rem;
+  margin-top: 1.25rem;
 }
 
 h5 {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   line-height: 1.5;
+  margin-bottom: 0.75rem;
+  margin-top: 1rem;
 }
 
 h6 {
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.5;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.625rem;
+  margin-top: 0.875rem;
+  color: var(--global-text-color-light);
 }
 
 p,
@@ -73,6 +97,35 @@ li,
 span,
 strong {
   color: var(--global-text-color);
+}
+
+// Improved paragraph spacing and readability
+p {
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+// Section anchor links
+.section-anchor {
+  position: absolute;
+  left: -1.5rem;
+  opacity: 0;
+  color: var(--global-theme-color);
+  font-size: 0.8em;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateX(-5px);
+
+  &:hover {
+    opacity: 1 !important;
+    transform: translateX(0);
+  }
+}
+
+h2, h3, h4 {
+  &:hover .section-anchor {
+    opacity: 0.6;
+  }
 }
 
 hr {
@@ -332,12 +385,7 @@ ul.task-list input[type="checkbox"] {
 // Navbar customization
 
 .navbar {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background-color: var(--global-bg-color);
-  opacity: 0.95;
-  border-bottom: 1px solid var(--global-divider-color);
-  box-shadow: var(--shadow-sm);
+  background-color: var(--global-bg-color) !important;
   transition: all 0.3s ease;
 }
 
@@ -824,6 +872,92 @@ footer.sticky-bottom {
       font-size: 1.5rem;
     }
   }
+}
+
+// Research Map Link (Graph Icon)
+.publications-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .research-map-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--global-theme-color), var(--global-hover-color));
+    color: var(--global-bg-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(var(--global-theme-color-rgb, 94, 114, 228), 0.3);
+    position: relative;
+
+    i {
+      font-size: 1.125rem;
+      transition: transform 0.3s ease;
+    }
+
+    // Tooltip hint
+    &::before {
+      content: 'Interactive Research Map';
+      position: absolute;
+      bottom: calc(100% + 0.5rem);
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px);
+      background: var(--global-text-color);
+      color: var(--global-bg-color);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+    }
+
+    // Tooltip arrow
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + 0.125rem);
+      left: 50%;
+      transform: translateX(-50%);
+      border: 4px solid transparent;
+      border-top-color: var(--global-text-color);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 16px rgba(var(--global-theme-color-rgb, 94, 114, 228), 0.5);
+
+      i {
+        transform: rotate(15deg) scale(1.1);
+      }
+
+      &::before,
+      &::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+}
+
+// Continue with existing publications styles
+.publications {
 
   h2.bibliography {
     color: var(--global-divider-color);
@@ -845,12 +979,32 @@ footer.sticky-bottom {
       border-radius: var(--radius-md);
       border-left: 4px solid var(--global-theme-color);
       box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+
+      // Subtle gradient overlay on hover
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, transparent 0%, rgba(var(--global-theme-color-rgb, 94, 114, 228), 0.03) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
 
       &:hover {
         border-left-width: 6px;
-        box-shadow: var(--shadow-md);
-        transform: translateX(2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        transform: translateX(4px) translateY(-2px);
+
+        &::after {
+          opacity: 1;
+        }
       }
 
       .preview {
@@ -1491,12 +1645,39 @@ ninja-keys::part(ninja-input-wrapper) {
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border-left: 4px solid var(--global-theme-color);
   overflow: hidden;
+
+  // Animated gradient border
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(var(--global-card-bg-color), var(--global-card-bg-color)),
+    linear-gradient(135deg, var(--global-theme-color), var(--global-hover-color), var(--global-theme-color));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--global-theme-color), var(--global-hover-color), var(--global-theme-color));
+    background-size: 200% 200%;
+    border-radius: var(--radius-sm);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: gradientShift 3s ease infinite;
+  }
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
+
+    &::before {
+      opacity: 0.8;
+    }
 
     .quote-watermark {
       transform: scale(1.1) rotate(5deg);
@@ -1621,4 +1802,206 @@ ninja-keys::part(ninja-input-wrapper) {
 ::highlight(search) {
   background-color: var(--global-theme-color);
   color: var(--global-text-color);
+}
+
+// Keyframe Animations
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Mobile Touch Target Improvements
+@media (max-width: 768px) {
+  // Larger touch targets for buttons and links
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Navbar links
+  .navbar-nav .nav-link {
+    padding: 1rem 1.25rem !important;
+    font-size: 1.0625rem;
+  }
+
+  // Publication links and buttons
+  .publications ol.bibliography li .links a.btn {
+    padding: 0.625rem 1.25rem;
+    margin: 0.25rem 0.25rem 0.25rem 0;
+    font-size: 0.9375rem;
+  }
+
+  // Social icons - larger touch area
+  .social .contact-icons a {
+    padding: 0.5rem;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  // Improved spacing for mobile readability
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  // Card spacing on mobile
+  .card {
+    margin-bottom: 1.25rem;
+  }
+
+  // Better publication card spacing
+  .publications ol.bibliography li {
+    padding: $spacing-lg;
+    margin-bottom: $spacing-md;
+  }
+
+  // Hide section anchors on mobile (too small)
+  .section-anchor {
+    display: none;
+  }
+
+  // Improved quote box on mobile
+  .quote-box {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  // Better news table spacing
+  .news table th,
+  .news table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9375rem;
+  }
+}
+
+// Research Map Floating Action Button
+.research-map-fab {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--global-theme-color), var(--global-hover-color));
+  color: var(--global-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(var(--global-theme-color-rgb, 94, 114, 228), 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  text-decoration: none;
+  cursor: pointer;
+
+  i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .fab-tooltip {
+    position: absolute;
+    right: calc(100% + 1rem);
+    background: var(--global-text-color);
+    color: var(--global-bg-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: var(--global-text-color);
+    }
+  }
+
+  &:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 8px 30px rgba(var(--global-theme-color-rgb, 94, 114, 228), 0.6);
+
+    i {
+      transform: rotate(15deg);
+    }
+
+    .fab-tooltip {
+      opacity: 1;
+      right: calc(100% + 0.75rem);
+    }
+  }
+
+  &:active {
+    transform: scale(1.05) translateY(-1px);
+  }
+
+  // Pulse animation
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--global-theme-color), var(--global-hover-color));
+    opacity: 0.3;
+    animation: fab-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fab-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+// Mobile FAB adjustments
+@media (max-width: 768px) {
+  .research-map-fab {
+    bottom: 5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+
+    i {
+      font-size: 1.25rem;
+    }
+
+    .fab-tooltip {
+      display: none; // Hide tooltip on mobile
+    }
+  }
 }

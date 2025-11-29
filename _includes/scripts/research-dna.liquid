@@ -1,0 +1,19 @@
+{% if page.research_dna or page.coauthor_network %}
+  <!-- D3.js for Visualizations -->
+  <script
+    defer
+    src="{{ site.third_party_libraries.d3.url.js }}"
+    integrity="{{ site.third_party_libraries.d3.integrity.js }}"
+    crossorigin="anonymous"
+  ></script>
+
+  {% if page.research_dna %}
+    <!-- Research DNA Visualization Script -->
+    <script defer src="{{ '/assets/js/research-dna.js' | relative_url | bust_file_cache }}"></script>
+  {% endif %}
+
+  {% if page.coauthor_network %}
+    <!-- Co-author Network Visualization Script -->
+    <script defer src="{{ '/assets/js/coauthor-network.js' | relative_url | bust_file_cache }}"></script>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,392 @@
+/*******************************************************************************
+ * Research DNA Visualization Styles
+ ******************************************************************************/
+
+.research-dna-container {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--global-card-bg-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--global-divider-color);
+}
+
+.research-dna-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 2rem;
+    color: var(--global-theme-color);
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+  }
+}
+
+.research-dna-subtitle {
+  color: var(--global-text-color-light);
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+}
+
+.research-dna-visualization {
+  width: 100%;
+  min-height: 450px;
+  position: relative;
+  border-radius: var(--radius-md);
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  overflow: hidden;
+
+  svg {
+    display: block;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+// Node styles
+.research-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  circle {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+
+    &.node-current {
+      animation: pulse-current 2s ease-in-out infinite;
+    }
+
+    &.node-active {
+      animation: pulse-active 3s ease-in-out infinite;
+    }
+  }
+
+  &:hover circle {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  }
+}
+
+// Link styles
+.research-link {
+  transition: all 0.3s ease;
+}
+
+// Node label styles
+.node-label {
+  pointer-events: none;
+  user-select: none;
+  font-family: $font-family-sans-serif;
+  text-shadow:
+    1px 1px 2px var(--global-text-color),
+    -1px -1px 2px var(--global-text-color),
+    1px -1px 2px var(--global-text-color),
+    -1px 1px 2px var(--global-text-color);
+}
+
+// Legend
+.research-dna-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--global-text-color-light);
+}
+
+.legend-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--global-bg-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &.current {
+    background: var(--global-theme-color);
+    animation: pulse-current 2s ease-in-out infinite;
+  }
+
+  &.active {
+    background: var(--global-hover-color);
+  }
+
+  &.past {
+    background: var(--global-text-color-light);
+  }
+}
+
+// Pulse animations
+@keyframes pulse-current {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse-active {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+  .research-dna-container {
+    padding: 1.5rem 1rem;
+    margin: 2rem 0;
+  }
+
+  .research-dna-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .research-dna-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .research-dna-visualization {
+    min-height: 350px;
+  }
+
+  .research-dna-legend {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .node-label {
+    font-size: 10px !important;
+  }
+}
+
+// Dark mode adjustments
+@media (prefers-color-scheme: dark) {
+  .research-link {
+    stroke-opacity: 0.4 !important;
+  }
+
+  .legend-circle {
+    border-color: var(--global-card-bg-color);
+  }
+}
+
+// Loading state
+.research-dna-visualization.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    content: 'Loading visualization...';
+    color: var(--global-text-color-light);
+    font-size: 0.9375rem;
+  }
+}
+
+/*******************************************************************************
+ * Co-author Network Visualization Styles
+ ******************************************************************************/
+
+.coauthor-network-container {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--global-card-bg-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--global-divider-color);
+}
+
+.coauthor-network-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 2rem;
+    color: var(--global-theme-color);
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+  }
+}
+
+.coauthor-network-subtitle {
+  color: var(--global-text-color-light);
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+}
+
+.coauthor-network-visualization {
+  width: 100%;
+  min-height: 400px;
+  position: relative;
+  border-radius: var(--radius-md);
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  overflow: hidden;
+
+  svg {
+    display: block;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+// Co-author node styles
+.coauthor-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  circle {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+
+    &.node-primary {
+      animation: pulse-primary 3s ease-in-out infinite;
+    }
+  }
+
+  &:hover circle {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  }
+
+  .paper-badge {
+    transition: all 0.2s ease;
+  }
+
+  .paper-count {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+// Co-author link styles
+.coauthor-link {
+  transition: all 0.3s ease;
+}
+
+// Co-author label styles
+.coauthor-label {
+  pointer-events: none;
+  user-select: none;
+  font-family: $font-family-sans-serif;
+  text-shadow:
+    1px 1px 2px var(--global-text-color),
+    -1px -1px 2px var(--global-text-color),
+    1px -1px 2px var(--global-text-color),
+    -1px 1px 2px var(--global-text-color);
+}
+
+// Co-author Legend
+.coauthor-network-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--global-divider-color);
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--global-text-color-light);
+  }
+
+  .legend-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--global-bg-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+
+    &.primary {
+      background: var(--global-theme-color);
+    }
+
+    &.frequent {
+      background: var(--global-hover-color);
+    }
+
+    &.regular {
+      background: var(--global-text-color);
+    }
+
+    &.occasional {
+      background: var(--global-text-color-light);
+    }
+  }
+}
+
+// Primary node pulse
+@keyframes pulse-primary {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+// Mobile responsiveness for co-author network
+@media (max-width: 768px) {
+  .coauthor-network-container {
+    padding: 1.5rem 1rem;
+    margin: 2rem 0;
+  }
+
+  .coauthor-network-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .coauthor-network-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .coauthor-network-visualization {
+    min-height: 350px;
+  }
+
+  .coauthor-network-legend {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding-left: 1rem;
+  }
+
+  .coauthor-label {
+    font-size: 9px !important;
+  }
+}
+
+// Dark mode adjustments for co-author network
+@media (prefers-color-scheme: dark) {
+  .coauthor-link {
+    stroke-opacity: 0.5 !important;
+  }
+
+  .legend-circle {
+    border-color: var(--global-card-bg-color);
+  }
+}

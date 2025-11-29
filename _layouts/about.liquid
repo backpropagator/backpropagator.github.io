@@ -58,8 +58,11 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
+      <h2 class="publications-header">
         <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+        <a href="{{ '/research-map/' | relative_url }}" class="research-map-link" title="View Research Map">
+          <i class="fas fa-project-diagram"></i>
+        </a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
