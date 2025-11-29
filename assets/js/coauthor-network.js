@@ -1,7 +1,19 @@
 // Co-author Collaboration Network using D3.js
-document.addEventListener('DOMContentLoaded', function() {
+function initializeCoauthorNetwork() {
   const container = document.getElementById('coauthor-network-viz');
-  if (!container) return;
+  if (!container) {
+    console.log('Container not found');
+    return;
+  }
+
+  // Check if D3 is loaded
+  if (typeof d3 === 'undefined') {
+    console.warn('D3.js not loaded yet, retrying...');
+    setTimeout(initializeCoauthorNetwork, 100);
+    return;
+  }
+
+  console.log('Initializing coauthor network...');
 
   // Fetch co-author data from JSON file
   fetch('/assets/json/coauthors.json')
@@ -12,11 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
       return response.json();
     })
     .then(data => {
+      console.log('Data loaded successfully:', data.nodes.length, 'nodes,', data.links.length, 'links');
       initializeVisualization(data);
     })
     .catch(error => {
       console.error('Error loading coauthor data:', error);
-      container.innerHTML = '<p style="text-align: center; color: var(--global-text-color-light);">Unable to load collaboration network</p>';
+      container.innerHTML = '<p style="text-align: center; color: var(--global-text-color-light); padding: 2rem;">Unable to load collaboration network.<br>Error: ' + error.message + '</p>';
     });
 
   function initializeVisualization(data) {
@@ -285,4 +298,11 @@ document.addEventListener('DOMContentLoaded', function() {
       simulation.alpha(0.3).restart();
     });
   }
-});
+}
+
+// Initialize when DOM is ready and D3 is loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeCoauthorNetwork);
+} else {
+  initializeCoauthorNetwork();
+}
