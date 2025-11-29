@@ -25,7 +25,12 @@ function initializeCoauthorNetwork() {
     })
     .then(data => {
       console.log('Data loaded successfully:', data.nodes.length, 'nodes,', data.links.length, 'links');
-      initializeVisualization(data);
+      try {
+        initializeVisualization(data);
+      } catch (error) {
+        console.error('Error initializing visualization:', error);
+        container.innerHTML = '<p style="text-align: center; color: var(--global-text-color-light); padding: 2rem;">Error creating visualization.<br>Details: ' + error.message + '</p>';
+      }
     })
     .catch(error => {
       console.error('Error loading coauthor data:', error);
@@ -37,12 +42,18 @@ function initializeCoauthorNetwork() {
     const width = container.clientWidth;
     const height = Math.min(500, width * 0.65);
 
-    // Create SVG
-    const svg = d3.select('#coauthor-network-viz')
+    console.log('Container dimensions:', width, 'x', height);
+    console.log('Data nodes:', data.nodes);
+    console.log('Data links:', data.links);
+
+    // Create SVG - use container directly instead of selector
+    const svg = d3.select(container)
       .append('svg')
       .attr('width', width)
       .attr('height', height)
       .attr('viewBox', [0, 0, width, height]);
+
+    console.log('SVG created:', svg.node());
 
     const g = svg.append('g');
 
@@ -63,9 +74,14 @@ function initializeCoauthorNetwork() {
       occasional: { color: 'var(--global-text-color-light)', size: 16 }
     };
 
+    console.log('Starting force simulation...');
+
+    // Ensure links have proper structure with id function
+    const links = data.links.map(d => Object.create(d));
+
     // Force simulation with improved parameters for better spacing
     const simulation = d3.forceSimulation(data.nodes)
-      .force('link', d3.forceLink(data.links)
+      .force('link', d3.forceLink(links)
         .id(d => d.id)
         // Distance based on link strength - stronger connections closer
         .distance(d => 120 - (d.strength * 15))
@@ -105,24 +121,27 @@ function initializeCoauthorNetwork() {
     // Increase simulation iterations for better layout
     simulation.alpha(1).alphaDecay(0.015);
 
-    // Create links
+    console.log('Creating links...');
+    // Create links - make them scale with collaboration strength
     const link = g.append('g')
       .selectAll('line')
       .data(data.links)
       .join('line')
       .attr('class', 'coauthor-link')
       .attr('stroke', 'var(--global-divider-color)')
-      .attr('stroke-opacity', d => 0.4 + (d.strength * 0.1))
-      .attr('stroke-width', d => 1 + (d.strength * 0.5));
+      .attr('stroke-opacity', d => 0.5 + (d.strength * 0.15))
+      .attr('stroke-width', d => 1.5 + (d.strength * 1.5));
 
+    console.log('Creating nodes...');
     // Create node groups
     const node = g.append('g')
       .selectAll('g')
-      .data(data.nodes)
+      .data(data.nodes, d => d.id)
       .join('g')
       .attr('class', 'coauthor-node')
       .call(drag(simulation));
 
+    console.log('Adding circles to nodes...');
     // Add circles
     node.append('circle')
       .attr('r', d => nodeConfig[d.type].size)
@@ -136,43 +155,30 @@ function initializeCoauthorNetwork() {
     const labels = node.append('g')
       .attr('class', 'label-group');
 
-    // Add label background for better readability
-    labels.append('rect')
-      .attr('class', 'label-bg')
-      .attr('fill', 'var(--global-bg-color)')
-      .attr('opacity', 0.85)
-      .attr('rx', 4)
-      .attr('ry', 4);
-
     // Add labels with proper text wrapping
     const labelTexts = labels.append('text')
       .attr('class', 'coauthor-label')
       .attr('text-anchor', 'middle')
       .attr('dy', '0.35em');
 
-    labelTexts.selectAll('tspan')
-      .data(d => d.label.split('\n'))
-      .join('tspan')
-      .attr('x', 0)
-      .attr('dy', (d, i) => i ? '1.1em' : 0)
-      .text(d => d)
-      .attr('fill', 'var(--global-text-color)')
-      .attr('font-size', d => {
-        const parent = d3.select(this.parentNode).datum();
-        return parent.type === 'primary' ? '12px' : '10px';
-      })
-      .attr('font-weight', '600');
+    labelTexts.each(function(nodeData) {
+      const textElement = d3.select(this);
+      const lines = nodeData.label.split('\n');
 
-    // Calculate label background dimensions after text is rendered
-    labels.each(function(d) {
-      const text = d3.select(this).select('text');
-      const bbox = text.node().getBBox();
-
-      d3.select(this).select('rect')
-        .attr('x', bbox.x - 4)
-        .attr('y', bbox.y - 3)
-        .attr('width', bbox.width + 8)
-        .attr('height', bbox.height + 6);
+      lines.forEach((line, i) => {
+        textElement.append('tspan')
+          .attr('x', 0)
+          .attr('dy', i === 0 ? '0em' : '1.1em')
+          .text(line)
+          .attr('fill', 'var(--global-text-color)')
+          .attr('font-size', nodeData.type === 'primary' ? '12px' : '10px')
+          .attr('font-weight', '600')
+          .style('text-shadow',
+            '1px 1px 2px var(--global-bg-color),' +
+            '-1px -1px 2px var(--global-bg-color),' +
+            '1px -1px 2px var(--global-bg-color),' +
+            '-1px 1px 2px var(--global-bg-color)');
+      });
     });
 
     // Add paper count badges
@@ -204,9 +210,13 @@ function initializeCoauthorNetwork() {
         const connectedIds = new Set();
         connectedIds.add(d.id);
 
-        data.links.forEach(l => {
-          if (l.source.id === d.id) connectedIds.add(l.target.id);
-          if (l.target.id === d.id) connectedIds.add(l.source.id);
+        links.forEach(l => {
+          if (l.source === d.id || (typeof l.source === 'object' && l.source.id === d.id)) {
+            connectedIds.add(typeof l.target === 'object' ? l.target.id : l.target);
+          }
+          if (l.target === d.id || (typeof l.target === 'object' && l.target.id === d.id)) {
+            connectedIds.add(typeof l.source === 'object' ? l.source.id : l.source);
+          }
         });
 
         node.selectAll('circle:not(.paper-badge)')

@@ -11,32 +11,60 @@
       "id": "prathosh",
       "label": "Prathosh\nA.P.",
       "type": "frequent",
-      "papers": 8,
+      "papers": 5,
       "fullName": "Prathosh A.P."
     },
     {
       "id": "kinjawl",
       "label": "Kinjawl\nBhattacharyya",
-      "type": "frequent",
-      "papers": 3,
+      "type": "regular",
+      "papers": 2,
       "fullName": "Kinjawl Bhattacharyya"
+    },
+    {
+      "id": "ankur",
+      "label": "Ankur\nPandey",
+      "type": "frequent",
+      "papers": 5,
+      "fullName": "Ankur Pandey"
+    },
+    {
+      "id": "sudhir",
+      "label": "Sudhir\nKumar",
+      "type": "frequent",
+      "papers": 5,
+      "fullName": "Sudhir Kumar"
+    },
+    {
+      "id": "arnab",
+      "label": "Arnab Kumar\nMondal",
+      "type": "regular",
+      "papers": 4,
+      "fullName": "Arnab Kumar Mondal"
+    },
+    {
+      "id": "parag",
+      "label": "Parag\nSingla",
+      "type": "regular",
+      "papers": 3,
+      "fullName": "Parag Singla"
     },
     {
       "id": "subhodip",
       "label": "Subhodip\nPanda",
-      "type": "regular",
+      "type": "occasional",
       "papers": 1,
       "fullName": "Subhodip Panda"
     },
     {
       "id": "atri",
       "label": "Atri\nGuha",
-      "type": "regular",
+      "type": "occasional",
       "papers": 1,
       "fullName": "Atri Guha"
     },
     {
-      "id": "kumar-shubham",
+      "id": "shubham",
       "label": "Shubham\nKumar",
       "type": "occasional",
       "papers": 1,
@@ -50,50 +78,42 @@
       "fullName": "Vivek Kashyap"
     },
     {
-      "id": "arnab",
-      "label": "Arnab Kumar\nMondal",
-      "type": "occasional",
-      "papers": 1,
-      "fullName": "Arnab Kumar Mondal"
-    },
-    {
       "id": "gaurav",
       "label": "Gaurav\nPrasad",
       "type": "occasional",
       "papers": 1,
       "fullName": "Gaurav Prasad"
-    },
-    {
-      "id": "ankur",
-      "label": "Ankur\nPandey",
-      "type": "occasional",
-      "papers": 1,
-      "fullName": "Ankur Pandey"
-    },
-    {
-      "id": "sudhir",
-      "label": "Sudhir\nKumar",
-      "type": "occasional",
-      "papers": 1,
-      "fullName": "Sudhir Kumar"
-    },
-    {
-      "id": "parag",
-      "label": "Parag\nSingla",
-      "type": "occasional",
-      "papers": 1,
-      "fullName": "Parag Singla"
     }
   ],
   "links": [
     {
       "source": "you",
       "target": "prathosh",
-      "strength": 8
+      "strength": 5
     },
     {
       "source": "you",
       "target": "kinjawl",
+      "strength": 2
+    },
+    {
+      "source": "you",
+      "target": "ankur",
+      "strength": 5
+    },
+    {
+      "source": "you",
+      "target": "sudhir",
+      "strength": 5
+    },
+    {
+      "source": "you",
+      "target": "arnab",
+      "strength": 4
+    },
+    {
+      "source": "you",
+      "target": "parag",
       "strength": 3
     },
     {
@@ -108,7 +128,7 @@
     },
     {
       "source": "you",
-      "target": "kumar-shubham",
+      "target": "shubham",
       "strength": 1
     },
     {
@@ -118,28 +138,13 @@
     },
     {
       "source": "you",
-      "target": "arnab",
-      "strength": 1
-    },
-    {
-      "source": "you",
       "target": "gaurav",
       "strength": 1
     },
     {
-      "source": "you",
-      "target": "ankur",
-      "strength": 1
-    },
-    {
-      "source": "you",
+      "source": "ankur",
       "target": "sudhir",
-      "strength": 1
-    },
-    {
-      "source": "you",
-      "target": "parag",
-      "strength": 1
+      "strength": 5
     },
     {
       "source": "prathosh",
@@ -147,8 +152,8 @@
       "strength": 1
     },
     {
-      "source": "kinjawl",
-      "target": "you",
+      "source": "arnab",
+      "target": "parag",
       "strength": 3
     }
   ]
