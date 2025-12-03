@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <!-- Gradients for nodes -->
+    <linearGradient id="nodeGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357abd;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="nodeGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6ba3f5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a90e2;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Glow effects -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Connection gradient -->
+    <linearGradient id="connGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#357abd;stop-opacity:0.3" />
+    </linearGradient>
+
+    <linearGradient id="connGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6ba3f5;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#4a90e2;stop-opacity:0.4" />
+    </linearGradient>
+
+    <style>
+      @media (prefers-color-scheme: light) {
+        .node { fill: url(#nodeGradientLight); }
+        .node-outline { stroke: #2d5aa8; stroke-width: 1.5; fill: none; }
+        .connection { stroke: url(#connGradientLight); }
+      }
+      @media (prefers-color-scheme: dark) {
+        .node { fill: url(#nodeGradientDark); }
+        .node-outline { stroke: #8bb4ff; stroke-width: 1.5; fill: none; }
+        .connection { stroke: url(#connGradientDark); }
+      }
+    </style>
+  </defs>
+
+  <!-- Background with subtle rounded corners effect -->
+  <rect width="200" height="200" fill="transparent" rx="20"/>
+
+  <!-- Layer 1 (2 nodes) -->
+  <circle class="node" cx="40" cy="60" r="9" filter="url(#glow)"/>
+  <circle class="node-outline" cx="40" cy="60" r="9"/>
+
+  <circle class="node" cx="40" cy="140" r="9" filter="url(#glow)"/>
+  <circle class="node-outline" cx="40" cy="140" r="9"/>
+
+  <!-- Layer 2 (3 nodes) -->
+  <circle class="node" cx="100" cy="50" r="9" filter="url(#glow)"/>
+  <circle class="node-outline" cx="100" cy="50" r="9"/>
+
+  <circle class="node" cx="100" cy="100" r="9" filter="url(#glow)"/>
+  <circle class="node-outline" cx="100" cy="100" r="9"/>
+
+  <circle class="node" cx="100" cy="150" r="9" filter="url(#glow)"/>
+  <circle class="node-outline" cx="100" cy="150" r="9"/>
+
+  <!-- Layer 3 (1 node - Output node, slightly larger) -->
+  <circle class="node" cx="160" cy="100" r="11" filter="url(#glow)"/>
+  <circle class="node-outline" cx="160" cy="100" r="11"/>
+
+  <!-- Connections from Layer 1 to Layer 2 -->
+  <line class="connection" x1="49" y1="60" x2="91" y2="50" stroke-width="2" stroke-linecap="round"/>
+  <line class="connection" x1="49" y1="60" x2="91" y2="100" stroke-width="2" stroke-linecap="round"/>
+  <line class="connection" x1="49" y1="60" x2="91" y2="150" stroke-width="2" stroke-linecap="round"/>
+
+  <line class="connection" x1="49" y1="140" x2="91" y2="50" stroke-width="2" stroke-linecap="round"/>
+  <line class="connection" x1="49" y1="140" x2="91" y2="100" stroke-width="2" stroke-linecap="round"/>
+  <line class="connection" x1="49" y1="140" x2="91" y2="150" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Connections from Layer 2 to Layer 3 -->
+  <line class="connection" x1="109" y1="50" x2="149" y2="100" stroke-width="2" stroke-linecap="round"/>
+  <line class="connection" x1="109" y1="100" x2="149" y2="100" stroke-width="2" stroke-linecap="round"/>
+  <line class="connection" x1="109" y1="150" x2="149" y2="100" stroke-width="2" stroke-linecap="round"/>
+</svg>
