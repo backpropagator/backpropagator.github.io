@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="backpropGradient" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5365c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5e72e4;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f5365c" />
+    </marker>
+  </defs>
+  
+  <!-- Backpropagation Flow -->
+  <g fill="none" stroke-width="4" stroke-linecap="round">
+    <!-- Forward Pass (Faint) -->
+    <path d="M 20 50 L 80 50" stroke="#e9ecef" stroke-width="8" />
+    
+    <!-- Backward Pass (Prominent) -->
+    <path d="M 80 35 C 60 35, 40 65, 20 65" stroke="url(#backpropGradient)" stroke-width="6" marker-end="url(#arrowhead)" />
+    
+    <!-- Nodes representing layers -->
+    <circle cx="20" cy="50" r="8" fill="#5e72e4" stroke="none" />
+    <circle cx="50" cy="50" r="8" fill="#8965e0" stroke="none" />
+    <circle cx="80" cy="50" r="8" fill="#f5365c" stroke="none" />
+    
+    <!-- Gradient/Derivative Symbol -->
+    <text x="45" y="30" font-family="serif" font-size="24" fill="#f5365c" font-weight="bold">∇</text>
+  </g>
+</svg>
