@@ -24,31 +24,31 @@
     <!-- Connections (Lines) -->
     <!-- Input (Left) to Hidden (Center) -->
     <!-- From Input 1 (Top) -->
-    <line x1="20" y1="30" x2="50" y2="20" opacity="0.6" />
-    <line x1="20" y1="30" x2="50" y2="50" opacity="0.6" />
-    <line x1="20" y1="30" x2="50" y2="80" opacity="0.6" />
+    <line x1="15" y1="25" x2="50" y2="15" opacity="0.6" />
+    <line x1="15" y1="25" x2="50" y2="50" opacity="0.6" />
+    <line x1="15" y1="25" x2="50" y2="85" opacity="0.6" />
     
     <!-- From Input 2 (Bottom) -->
-    <line x1="20" y1="70" x2="50" y2="20" opacity="0.6" />
-    <line x1="20" y1="70" x2="50" y2="50" opacity="0.6" />
-    <line x1="20" y1="70" x2="50" y2="80" opacity="0.6" />
+    <line x1="15" y1="75" x2="50" y2="15" opacity="0.6" />
+    <line x1="15" y1="75" x2="50" y2="50" opacity="0.6" />
+    <line x1="15" y1="75" x2="50" y2="85" opacity="0.6" />
     
     <!-- Hidden (Center) to Output (Right) -->
-    <line x1="50" y1="20" x2="80" y2="50" opacity="0.8" />
-    <line x1="50" y1="50" x2="80" y2="50" opacity="0.8" />
-    <line x1="50" y1="80" x2="80" y2="50" opacity="0.8" />
+    <line x1="50" y1="15" x2="85" y2="50" opacity="0.8" />
+    <line x1="50" y1="50" x2="85" y2="50" opacity="0.8" />
+    <line x1="50" y1="85" x2="85" y2="50" opacity="0.8" />
     
     <!-- Nodes (Circles) -->
     <!-- Input Layer (2 Nodes) -->
-    <circle cx="20" cy="30" r="7.5" />
-    <circle cx="20" cy="70" r="7.5" />
+    <circle cx="15" cy="25" r="6" />
+    <circle cx="15" cy="75" r="6" />
     
     <!-- Hidden Layer (3 Nodes) -->
-    <circle cx="50" cy="20" r="7.5" />
-    <circle cx="50" cy="50" r="7.5" />
-    <circle cx="50" cy="80" r="7.5" />
+    <circle cx="50" cy="15" r="6" />
+    <circle cx="50" cy="50" r="6" />
+    <circle cx="50" cy="85" r="6" />
     
     <!-- Output Layer (1 Node) -->
-    <circle cx="80" cy="50" r="9.5" />
+    <circle cx="85" cy="50" r="8" />
   </g>
 </svg>
