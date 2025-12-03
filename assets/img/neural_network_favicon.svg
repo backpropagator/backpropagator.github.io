@@ -107,7 +107,7 @@
 
   <!-- Connections from Layer 2 to Layer 3 -->
   <line class="connection" x1="109" y1="50" x2="149" y2="100" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="109" y1="100" x2="149" y2="100" stroke-width="2.5" stroke-linecap="round"/>
+  <line class="connection" x1="109" y1="95" x2="149" y2="100" stroke-width="2.5" stroke-linecap="round"/>
   <line class="connection" x1="109" y1="150" x2="149" y2="100" stroke-width="2.5" stroke-linecap="round"/>
 
   <!-- Layer 1 (2 nodes) - Red/Input -->
