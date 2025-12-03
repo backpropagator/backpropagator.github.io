@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
     <!-- Colorful gradients for Layer 1 nodes (Input layer) -->
     <linearGradient id="node1GradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -33,9 +33,9 @@
       <stop offset="100%" style="stop-color:#FFD93D;stop-opacity:1" />
     </linearGradient>
 
-    <!-- Enhanced glow effects -->
+    <!-- Glow effects -->
     <filter id="glowRed" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -43,7 +43,7 @@
     </filter>
 
     <filter id="glowTeal" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -51,7 +51,7 @@
     </filter>
 
     <filter id="glowGold" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -60,80 +60,68 @@
 
     <!-- Connection gradients -->
     <linearGradient id="connGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.5" />
-      <stop offset="50%" style="stop-color:#4ECDC4;stop-opacity:0.5" />
-      <stop offset="100%" style="stop-color:#FFD93D;stop-opacity:0.5" />
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#4ECDC4;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#FFD93D;stop-opacity:0.6" />
     </linearGradient>
 
     <linearGradient id="connGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FF8787;stop-opacity:0.6" />
-      <stop offset="50%" style="stop-color:#5FE3DC;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#FFE66D;stop-opacity:0.6" />
+      <stop offset="0%" style="stop-color:#FF8787;stop-opacity:0.7" />
+      <stop offset="50%" style="stop-color:#5FE3DC;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#FFE66D;stop-opacity:0.7" />
     </linearGradient>
 
+    <!-- Pulsing animation -->
     <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+
+      .node3 { animation: pulse 3s ease-in-out infinite; }
+
       @media (prefers-color-scheme: light) {
         .node1 { fill: url(#node1GradientLight); }
         .node2 { fill: url(#node2GradientLight); }
         .node3 { fill: url(#node3GradientLight); }
-        .node-outline1 { stroke: #C92A2A; stroke-width: 1.5; fill: none; }
-        .node-outline2 { stroke: #0B7A5B; stroke-width: 1.5; fill: none; }
-        .node-outline3 { stroke: #D4A500; stroke-width: 1.5; fill: none; }
         .connection { stroke: url(#connGradientLight); }
       }
       @media (prefers-color-scheme: dark) {
         .node1 { fill: url(#node1GradientDark); }
         .node2 { fill: url(#node2GradientDark); }
         .node3 { fill: url(#node3GradientDark); }
-        .node-outline1 { stroke: #FF9999; stroke-width: 1.5; fill: none; }
-        .node-outline2 { stroke: #2FE0D6; stroke-width: 1.5; fill: none; }
-        .node-outline3 { stroke: #FFE99B; stroke-width: 1.5; fill: none; }
         .connection { stroke: url(#connGradientDark); }
       }
     </style>
   </defs>
 
-  <!-- Background -->
-  <rect width="200" height="200" fill="transparent" rx="20"/>
+  <!-- Layer 1 (2 nodes) - Red/Input - Left side -->
+  <circle class="node1" cx="15" cy="35" r="5.5" filter="url(#glowRed)"/>
+  <circle class="node1" cx="15" cy="65" r="5.5" filter="url(#glowRed)"/>
 
-  <!-- Layer 1 (2 nodes) - Red/Input -->
-  <circle class="node1" cx="40" cy="60" r="9" filter="url(#glowRed)"/>
-  <circle class="node-outline1" cx="40" cy="60" r="9"/>
+  <!-- Layer 2 (4 nodes) - Teal/Hidden - Middle -->
+  <circle class="node2" cx="50" cy="20" r="5.5" filter="url(#glowTeal)"/>
+  <circle class="node2" cx="50" cy="40" r="5.5" filter="url(#glowTeal)"/>
+  <circle class="node2" cx="50" cy="60" r="5.5" filter="url(#glowTeal)"/>
+  <circle class="node2" cx="50" cy="80" r="5.5" filter="url(#glowTeal)"/>
 
-  <circle class="node1" cx="40" cy="140" r="9" filter="url(#glowRed)"/>
-  <circle class="node-outline1" cx="40" cy="140" r="9"/>
+  <!-- Layer 3 (1 node) - Gold/Output - Right side -->
+  <circle class="node3" cx="85" cy="50" r="6.5" filter="url(#glowGold)"/>
 
-  <!-- Layer 2 (4 nodes) - Teal/Hidden -->
-  <circle class="node2" cx="100" cy="40" r="9" filter="url(#glowTeal)"/>
-  <circle class="node-outline2" cx="100" cy="40" r="9"/>
+  <!-- Connections from Layer 1 to Layer 2 -->
+  <line class="connection" x1="20.5" y1="35" x2="44.5" y2="20" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="20.5" y1="35" x2="44.5" y2="40" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="20.5" y1="35" x2="44.5" y2="60" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="20.5" y1="35" x2="44.5" y2="80" stroke-width="1.2" stroke-linecap="round"/>
 
-  <circle class="node2" cx="100" cy="80" r="9" filter="url(#glowTeal)"/>
-  <circle class="node-outline2" cx="100" cy="80" r="9"/>
+  <line class="connection" x1="20.5" y1="65" x2="44.5" y2="20" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="20.5" y1="65" x2="44.5" y2="40" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="20.5" y1="65" x2="44.5" y2="60" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="20.5" y1="65" x2="44.5" y2="80" stroke-width="1.2" stroke-linecap="round"/>
 
-  <circle class="node2" cx="100" cy="120" r="9" filter="url(#glowTeal)"/>
-  <circle class="node-outline2" cx="100" cy="120" r="9"/>
-
-  <circle class="node2" cx="100" cy="160" r="9" filter="url(#glowTeal)"/>
-  <circle class="node-outline2" cx="100" cy="160" r="9"/>
-
-  <!-- Layer 3 (1 node) - Gold/Output (slightly larger) -->
-  <circle class="node3" cx="160" cy="100" r="11" filter="url(#glowGold)"/>
-  <circle class="node-outline3" cx="160" cy="100" r="11"/>
-
-  <!-- Connections from Layer 1 to Layer 2 (2x4 = 8 connections) -->
-  <line class="connection" x1="49" y1="60" x2="91" y2="40" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="49" y1="60" x2="91" y2="80" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="49" y1="60" x2="91" y2="120" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="49" y1="60" x2="91" y2="160" stroke-width="2.5" stroke-linecap="round"/>
-
-  <line class="connection" x1="49" y1="140" x2="91" y2="40" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="49" y1="140" x2="91" y2="80" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="49" y1="140" x2="91" y2="120" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="49" y1="140" x2="91" y2="160" stroke-width="2.5" stroke-linecap="round"/>
-
-  <!-- Connections from Layer 2 to Layer 3 (4x1 = 4 connections) -->
-  <line class="connection" x1="109" y1="40" x2="149" y2="100" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="109" y1="80" x2="149" y2="100" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="109" y1="120" x2="149" y2="100" stroke-width="2.5" stroke-linecap="round"/>
-  <line class="connection" x1="109" y1="160" x2="149" y2="100" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Connections from Layer 2 to Layer 3 -->
+  <line class="connection" x1="55.5" y1="20" x2="78.5" y2="50" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="55.5" y1="40" x2="78.5" y2="50" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="55.5" y1="60" x2="78.5" y2="50" stroke-width="1.2" stroke-linecap="round"/>
+  <line class="connection" x1="55.5" y1="80" x2="78.5" y2="50" stroke-width="1.2" stroke-linecap="round"/>
 </svg>
