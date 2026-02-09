@@ -3,7 +3,11 @@
     <h2>Collaboration Network</h2>
     <p class="coauthor-network-subtitle">My research collaborators and co-authors</p>
   </div>
+  <script type="application/json" id="author-publications-data">
+    {{ site.data.author_publications | jsonify }}
+  </script>
   <div id="coauthor-network-viz" class="coauthor-network-visualization"></div>
+  <div id="coauthor-detail-panel" class="research-detail-panel"></div>
   <div class="coauthor-network-legend">
     <div class="legend-item">
       <div class="legend-circle primary"></div>

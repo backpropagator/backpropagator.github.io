@@ -3,7 +3,11 @@
     <h2>Research DNA</h2>
     <p class="research-dna-subtitle">An interactive map of my research interests and their connections</p>
   </div>
+  <script type="application/json" id="research-publications-data">
+    {{ site.data.research_publications | jsonify }}
+  </script>
   <div id="research-dna-viz" class="research-dna-visualization"></div>
+  <div id="research-detail-panel" class="research-detail-panel"></div>
   <div class="research-dna-legend">
     <div class="legend-item">
       <div class="legend-circle current"></div>

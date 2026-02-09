@@ -51,29 +51,26 @@
 // Node styles
 .research-node {
   cursor: pointer;
-  transition: all 0.3s ease;
 
-  circle {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  .node-circle {
+    transition: fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                r 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
 
     &.node-current {
-      animation: pulse-current 2s ease-in-out infinite;
-    }
-
-    &.node-active {
-      animation: pulse-active 3s ease-in-out infinite;
+      animation: pulse-current 3s ease-in-out infinite;
     }
   }
 
-  &:hover circle {
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  &:hover .node-circle {
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.22));
   }
 }
 
 // Link styles
 .research-link {
-  transition: all 0.3s ease;
+  transition: stroke-opacity 0.3s ease, stroke-width 0.3s ease;
 }
 
 // Node label styles
@@ -81,11 +78,170 @@
   pointer-events: none;
   user-select: none;
   font-family: $font-family-sans-serif;
-  text-shadow:
-    1px 1px 2px var(--global-text-color),
-    -1px -1px 2px var(--global-text-color),
-    1px -1px 2px var(--global-text-color),
-    -1px 1px 2px var(--global-text-color);
+  letter-spacing: 0.01em;
+}
+
+// Tooltip styles (shared between both visualizations)
+.research-tooltip,
+.coauthor-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: var(--radius-sm, 6px);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--global-text-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  max-width: 240px;
+  z-index: 10;
+  transition: opacity 0.2s ease;
+
+  strong {
+    color: var(--global-theme-color);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  span {
+    color: var(--global-text-color-light);
+    font-size: 0.75rem;
+  }
+}
+
+// Detail panel (shown on node click)
+.research-detail-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              margin 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 1.25rem;
+  margin: 0;
+  position: relative;
+  background: var(--global-bg-color);
+  border-radius: var(--radius-md);
+
+  &.visible {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 1.25rem;
+    margin-top: 1rem;
+    border: 1px solid var(--global-divider-color);
+  }
+
+  .detail-panel-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--global-text-color-light);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+
+    &:hover {
+      color: var(--global-text-color);
+    }
+  }
+
+  .detail-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+
+    h4 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--global-text-color);
+    }
+  }
+
+  .detail-panel-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+
+    &--current {
+      background: var(--global-theme-color);
+      color: var(--global-bg-color);
+    }
+
+    &--active {
+      background: var(--global-hover-color);
+      color: var(--global-bg-color);
+    }
+
+    &--past {
+      background: var(--global-text-color-light);
+      color: var(--global-bg-color);
+    }
+  }
+
+  .detail-panel-desc {
+    color: var(--global-text-color-light);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .detail-panel-pubs {
+    h5 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--global-text-color-light);
+      margin: 0 0 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--global-divider-color);
+      font-size: 0.85rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      a {
+        color: var(--global-theme-color);
+        text-decoration: none;
+        line-height: 1.35;
+        display: block;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .pub-meta {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--global-text-color-light);
+      margin-top: 0.1rem;
+    }
+  }
+
+  .detail-panel-empty {
+    color: var(--global-text-color-light);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 0;
+  }
 }
 
 // Legend
@@ -107,15 +263,14 @@
 }
 
 .legend-circle {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   border: 2px solid var(--global-bg-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 
   &.current {
     background: var(--global-theme-color);
-    animation: pulse-current 2s ease-in-out infinite;
   }
 
   &.active {
@@ -127,22 +282,13 @@
   }
 }
 
-// Pulse animations
+// Pulse animation (subtle)
 @keyframes pulse-current {
   0%, 100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.7;
-  }
-}
-
-@keyframes pulse-active {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.85;
+    opacity: 0.8;
   }
 }
 
@@ -172,18 +318,7 @@
   }
 
   .node-label {
-    font-size: 10px !important;
-  }
-}
-
-// Dark mode adjustments
-@media (prefers-color-scheme: dark) {
-  .research-link {
-    stroke-opacity: 0.4 !important;
-  }
-
-  .legend-circle {
-    border-color: var(--global-card-bg-color);
+    font-size: 9px !important;
   }
 }
 
@@ -253,19 +388,20 @@
 // Co-author node styles
 .coauthor-node {
   cursor: pointer;
-  transition: all 0.3s ease;
 
-  circle {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  .node-circle {
+    transition: fill-opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                r 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
 
     &.node-primary {
       animation: pulse-primary 3s ease-in-out infinite;
     }
   }
 
-  &:hover circle {
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  &:hover .node-circle {
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.22));
   }
 
   .paper-badge {
@@ -280,19 +416,15 @@
 
 // Co-author link styles
 .coauthor-link {
-  transition: all 0.3s ease;
+  transition: stroke-opacity 0.3s ease, stroke-width 0.3s ease;
 }
 
-// Co-author label styles
+// Co-author label styles - positioned below circles
 .coauthor-label {
   pointer-events: none;
   user-select: none;
   font-family: $font-family-sans-serif;
-  text-shadow:
-    1px 1px 2px var(--global-text-color),
-    -1px -1px 2px var(--global-text-color),
-    1px -1px 2px var(--global-text-color),
-    -1px 1px 2px var(--global-text-color);
+  letter-spacing: 0.01em;
 }
 
 // Co-author Legend
@@ -314,11 +446,11 @@
   }
 
   .legend-circle {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     border: 2px solid var(--global-bg-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
 
     &.primary {
@@ -345,7 +477,7 @@
     opacity: 1;
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.85;
   }
 }
 
@@ -376,17 +508,22 @@
   }
 
   .coauthor-label {
-    font-size: 9px !important;
+    font-size: 8px !important;
   }
 }
 
-// Dark mode adjustments for co-author network
-@media (prefers-color-scheme: dark) {
+// Dark mode adjustments
+html[data-theme="dark"] {
+  .research-link,
   .coauthor-link {
-    stroke-opacity: 0.5 !important;
+    stroke-opacity: 0.5;
   }
 
   .legend-circle {
     border-color: var(--global-card-bg-color);
+  }
+
+  .node-label {
+    text-shadow: none;
   }
 }

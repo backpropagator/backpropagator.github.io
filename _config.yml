@@ -352,6 +352,7 @@ filtered_bibtex_keywords:
     selected,
     slides,
     supp,
+    research_areas,
     video,
     website,
   ]
