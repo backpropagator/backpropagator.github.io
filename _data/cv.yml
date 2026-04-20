@@ -33,11 +33,21 @@
 - title: Work Experience
   type: time_table
   contents:
+    - title: Student Researcher
+      institution: Google DeepMind
+      year: July 2025 - January 2026
+      description:
+        - Worked with the Anthrokrishi Team (GDM DeepMind) to segment agricultural land in high-resolution satellite imagery using vision-LLMs <b>without</b> any decoder head.
+        - Scaled <a href="https://arxiv.org/abs/2410.09855"><u>Text4Seg</u></a> to geospatial resolutions and applied RLHF via GRPO to enable image-level reward signals for post-training in vLLMs.
+        - Demonstrated that GRPO-based post-training improves VLM segmentation performance by ~16% on satellite data compared to existing VLM-baselines.
+
     - title: Research Intern
       institution: Adobe Research
       year: Summer 2024
       description:
-        - <u>Work:</u> Image Recolorization using Diffusion Priors.
+        - Developed a multi-modal image recoloring pipeline using Diffusion models, supporting diverse input conditions (text, stroke, exemplars).
+        - Designed modules to convert user conditions into unified hint-points and perform color transfer on images.
+        - Applied score-correction to hint-points for accurate recoloring via inference on ddim-inverted image latents leading to ~81% accuracy on instruct-colorization.
 
     - title: SDE Intern
       institution: CapitalVia Global Research Limited - Investment Advisor

@@ -3,6 +3,22 @@
 
 @string{aps = {American Physical Society,}}
 
+@article{tiwary2025debiasing,
+  abbr={TMLR},
+  bibtex_show={true},
+  author={Tiwary, Piyush and Verma, Prabhav and AP, Prathosh},
+  journal={Transactions on Machine Learning Research},
+  title={Debiasing Diffusion Models via Score Guidance},
+  year={2026},
+  abstract={With the increasing use of Diffusion Models (DMs) in everyday applications, it is very important to ensure that these models are  \textit{fair} towards various demographic/societal groups. However, due to several reasons DMs inherit biases towards specific gender, race and community, which can perpetuate and amplify societal inequities. Hence, it is important to \textit{debias} DMs. Previous debiasing approaches require additional reference data, model fine-tuning, or auxiliary classifier training - each of which incur additional cost. In this work, we provide a training-free inference-time method for debiasing diffusion models. First, we provide a theoretical explanation for the cause of biases inhibited by DMs. Specifically, we show that the unconditional score predicted by the denoiser can be expressed as a convex combination of conditional scores corresponding to the attributes under consideration. We then argue that the weights allocated to underrepresented attributes are less which leads to domination of other attributes in overall score function. Building on this, we propose a score-guidance method that adheres to a user provided reference distribution for generation. Moreover, we show that this score guidance can be achieved via different modalities like `text' and `exemplar images'. To our knowledge, our method is the first to provide a debiasing framework that can utilize different modalities for diffusion models. We demonstrate the effectiveness of our method across various attributes on both unconditional and conditional text-based diffusion models, including Stable Diffusion.},
+  keywords={Diffusion Models, Debiasing},
+  url={https://openreview.net/forum?id=vAz8xUHyTe},
+  pdf={https://openreview.net/forum?id=vAz8xUHyTe},
+  html={/projects/score-guidance/},
+  selected={true},
+  preview={debias_sg.gif},
+  research_areas={diffusion, debiasing}}
+
 @inproceedings{tiwary2024langdaug,
   abbr={ICML},
   bibtex_show={true},
@@ -30,7 +46,7 @@
   keywords={GANs, Unlearning},
   url={https://openreview.net/forum?id=jAHEBivObO&t=1739258832039},
   pdf={https://openreview.net/forum?id=jAHEBivObO&t=1739258832039},
-  html={https://backpropagator.github.io/projects/1_project/},
+  html={/projects/1_project/},
   selected={true},
   preview={atu-bd.png},
   research_areas={gans, unlearning}}

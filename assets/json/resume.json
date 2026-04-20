@@ -1,189 +1,206 @@
 {
-    "basics": {
-      "name": "Piyush Tiwary",
-      "label": "Researcher",
-      "image": "",
-      "email": "",
-      "phone": "",
-      "url": "",
-      "summary": "PhD Researcher and Prime Minister's Research Fellow at Indian Institute of Science",
-      "location": {
-        "address": "",
-        "postalCode": "",
-        "city": "Bangalore",
-        "countryCode": "IN",
-        "region": "Karnataka"
-      },
-      "profiles": []
+  "basics": {
+    "name": "Piyush Tiwary",
+    "label": "Researcher",
+    "image": "",
+    "email": "",
+    "phone": "",
+    "url": "",
+    "summary": "PhD Researcher and Prime Minister's Research Fellow at Indian Institute of Science",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Bangalore",
+      "countryCode": "IN",
+      "region": "Karnataka"
     },
-    "work": [
-      {
-        "name": "Adobe Research",
-        "position": "Research Intern",
-        "url": "",
-        "startDate": "2024-05-01",
-        "endDate": "2024-08-31",
-        "summary": "Image Recolorization using Diffusion Priors",
-        "highlights": []
-      },
-      {
-        "name": "CapitalVia Global Research Limited - Investment Advisor",
-        "position": "SDE Intern",
-        "url": "",
-        "startDate": "2020-05-01",
-        "endDate": "2020-08-31",
-        "summary": "Developing deployable parameter optimization framework for trading strategies using back-testing results on previous data",
-        "highlights": []
-      },
-      {
-        "name": "International Institute of Information Technology Bangalore, India",
-        "position": "Research Intern",
-        "url": "",
-        "startDate": "2019-05-01",
-        "endDate": "2019-08-31",
-        "summary": "Speaker Diarization using UIS-RNN under Prof. Manish Gupta",
-        "highlights": []
-      },
-      {
-        "name": "Indian Institute of Technology Patna, India",
-        "position": "Research Intern",
-        "url": "",
-        "startDate": "2018-05-01",
-        "endDate": "2018-08-31",
-        "summary": "Location tracking in faded IoT Environment under Prof. Sudhir Kumar",
-        "highlights": []
-      }
-    ],
-    "volunteer": [
-      {
-        "organization": "IEEE SPCOM 2022",
-        "position": "Volunteer",
-        "url": "",
-        "startDate": "2022-01-01",
-        "endDate": "2022-12-31",
-        "summary": "",
-        "highlights": []
-      },
-      {
-        "organization": "NeurIPS 2021",
-        "position": "Volunteer",
-        "url": "",
-        "startDate": "2021-01-01",
-        "endDate": "2021-12-31",
-        "summary": "",
-        "highlights": []
-      }
-    ],
-    "education": [
-      {
-        "institution": "Indian Institute of Science, Bangalore, India",
-        "location": "Bangalore, India",
-        "url": "",
-        "area": "PhD (Prime Minister's Research Fellow)",
-        "studyType": "PhD",
-        "startDate": "2021-01-01",
-        "endDate": "",
-        "score": "9.15/10",
-        "courses": [
-          "Stochastic Models & Applications",
-          "Pattern Recognition & Neural Network",
-          "Reinforcement Learning",
-          "Advanced Image Processing",
-          "Information Theory",
-          "Computational Methods in Optimization",
-          "Foundations of Data Science",
-          "Measure Theoretic Probability Theory",
-          "Stochastic Approximation Algorithms"
-        ]
-      },
-      {
-        "institution": "Indian Institute of Technology Patna (IIT Patna), India",
-        "location": "Patna, India",
-        "url": "",
-        "area": "Electrical Engineering",
-        "studyType": "Bachelor of Technology",
-        "startDate": "2017-01-01",
-        "endDate": "2021-01-01",
-        "score": "8.53/10",
-        "courses": []
-      }
-    ],
-    "awards": [
-      {
-        "title": "Prime Minister's Research Fellowship",
-        "date": "2022-08-01",
-        "awarder": "Government of India",
-        "url": "",
-        "summary": "Prestigious fellowship awarded in August-2022 cycle"
-      },
-      {
-        "title": "The Best Poster Presentation Award",
-        "date": "2021-01-01",
-        "awarder": "COMSNETS-2021",
-        "url": "",
-        "summary": ""
-      },
-      {
-        "title": "All India Rank 4880 in JEE Advanced 2017",
-        "date": "2017-01-01",
-        "awarder": "IIT JEE",
-        "url": "",
-        "summary": "Ranked among 150,000 candidates"
-      }
-    ],
-    "certificates": [],
-    "publications": [],
-    "skills": [],
-    "languages": [
-      {
-        "language": "English",
-        "fluency": "Fluent",
-        "icon": ""
-      },
-      {
-        "language": "Hindi",
-        "fluency": "Native speaker",
-        "icon": ""
-      },
-      {
-        "language": "Bhojpuri",
-        "fluency": "Native speaker",
-        "icon": ""
-      },
-      {
-        "language": "Marathi",
-        "fluency": "Limited proficiency",
-        "icon": ""
-      }
-    ],
-    "interests": [],
-    "references": [],
-    "projects": [],
-    "services": {
-      "reviewer": [
-        "CVPR (2025, 2024, 2022)",
-        "NeurIPS (2025, 2024, 2023)",
-        "ICML (2025, 2024)",
-        "AISTATS 2024",
-        "Complex & Intelligent Systems",
-        "IEEE Transactions on Dependable and Secure Computing"
+    "profiles": []
+  },
+  "work": [
+    {
+      "name": "Google DeepMind",
+      "position": "Student Researcher",
+      "url": "",
+      "startDate": "2025-07-01",
+      "endDate": "2026-01-31",
+      "summary": "Enhancing VLMs via GRPO for Geospatial Image Segmentation",
+      "highlights": [
+        "Worked with the Anthrokrishi Team (GDM DeepMind) to segment agricultural land in high-resolution satellite imagery using vision-LLMs <b>without</b> any decoder head.",
+        "Scaled <a href=\"https://arxiv.org/abs/2410.09855\"><u>Text4Seg</u></a> to geospatial resolutions and applied RLHF via GRPO to enable image-level reward signals for post-training in vLLMs.",
+        "Demonstrated that GRPO-based post-training improves VLM segmentation performance by ~16% on satellite data compared to existing VLM-baselines."
       ]
     },
-    "positions": [
-      {
-        "year": "2020",
-        "positions": [
-          "Badminton Coordinator of IIT Patna",
-          "Advisor of NJACK (Computer Science Club of IIT Patna)"
-        ]
-      },
-      {
-        "year": "2019",
-        "positions": [
-          "Badminton Coordinator of IIT Patna",
-          "Coordinator, Events and Operation of Celesta (Technical Fest of IIT Patna)",
-          "Coordinator, Technical Affairs of Anwesha (Cultural Fest of IIT Patna)"
-        ]
-      }
+    {
+      "name": "Adobe Research",
+      "position": "Research Intern",
+      "url": "",
+      "startDate": "2024-05-01",
+      "endDate": "2024-08-31",
+      "summary": "Image Recolorization using Diffusion Priors",
+      "highlights": [
+        "Developed a multi-modal image recoloring pipeline using Diffusion models, supporting diverse input conditions (text, stroke, exemplars).",
+        "Designed modules to convert user conditions into unified hint-points and perform color transfer on images.",
+        "Applied score-correction to hint-points for accurate recoloring via inference on ddim-inverted image latents leading to ~81% accuracy on instruct-colorization."
+      ]
+    },
+    {
+      "name": "CapitalVia Global Research Limited - Investment Advisor",
+      "position": "SDE Intern",
+      "url": "",
+      "startDate": "2020-05-01",
+      "endDate": "2020-08-31",
+      "summary": "Developing deployable parameter optimization framework for trading strategies using back-testing results on previous data",
+      "highlights": []
+    },
+    {
+      "name": "International Institute of Information Technology Bangalore, India",
+      "position": "Research Intern",
+      "url": "",
+      "startDate": "2019-05-01",
+      "endDate": "2019-08-31",
+      "summary": "Speaker Diarization using UIS-RNN under Prof. Manish Gupta",
+      "highlights": []
+    },
+    {
+      "name": "Indian Institute of Technology Patna, India",
+      "position": "Research Intern",
+      "url": "",
+      "startDate": "2018-05-01",
+      "endDate": "2018-08-31",
+      "summary": "Location tracking in faded IoT Environment under Prof. Sudhir Kumar",
+      "highlights": []
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "IEEE SPCOM 2022",
+      "position": "Volunteer",
+      "url": "",
+      "startDate": "2022-01-01",
+      "endDate": "2022-12-31",
+      "summary": "",
+      "highlights": []
+    },
+    {
+      "organization": "NeurIPS 2021",
+      "position": "Volunteer",
+      "url": "",
+      "startDate": "2021-01-01",
+      "endDate": "2021-12-31",
+      "summary": "",
+      "highlights": []
+    }
+  ],
+  "education": [
+    {
+      "institution": "Indian Institute of Science, Bangalore, India",
+      "location": "Bangalore, India",
+      "url": "",
+      "area": "PhD (Prime Minister's Research Fellow)",
+      "studyType": "PhD",
+      "startDate": "2021-01-01",
+      "endDate": "",
+      "score": "9.15/10",
+      "courses": [
+        "Stochastic Models & Applications",
+        "Pattern Recognition & Neural Network",
+        "Reinforcement Learning",
+        "Advanced Image Processing",
+        "Information Theory",
+        "Computational Methods in Optimization",
+        "Foundations of Data Science",
+        "Measure Theoretic Probability Theory",
+        "Stochastic Approximation Algorithms"
+      ]
+    },
+    {
+      "institution": "Indian Institute of Technology Patna (IIT Patna), India",
+      "location": "Patna, India",
+      "url": "",
+      "area": "Electrical Engineering",
+      "studyType": "Bachelor of Technology",
+      "startDate": "2017-01-01",
+      "endDate": "2021-01-01",
+      "score": "8.53/10",
+      "courses": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "Prime Minister's Research Fellowship",
+      "date": "2022-08-01",
+      "awarder": "Government of India",
+      "url": "",
+      "summary": "Prestigious fellowship awarded in August-2022 cycle"
+    },
+    {
+      "title": "The Best Poster Presentation Award",
+      "date": "2021-01-01",
+      "awarder": "COMSNETS-2021",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "title": "All India Rank 4880 in JEE Advanced 2017",
+      "date": "2017-01-01",
+      "awarder": "IIT JEE",
+      "url": "",
+      "summary": "Ranked among 150,000 candidates"
+    }
+  ],
+  "certificates": [],
+  "publications": [],
+  "skills": [],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Fluent",
+      "icon": ""
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Native speaker",
+      "icon": ""
+    },
+    {
+      "language": "Bhojpuri",
+      "fluency": "Native speaker",
+      "icon": ""
+    },
+    {
+      "language": "Marathi",
+      "fluency": "Limited proficiency",
+      "icon": ""
+    }
+  ],
+  "interests": [],
+  "references": [],
+  "projects": [],
+  "services": {
+    "reviewer": [
+      "CVPR (2025, 2024, 2022)",
+      "NeurIPS (2025, 2024, 2023)",
+      "ICML (2025, 2024)",
+      "AISTATS 2024",
+      "Complex & Intelligent Systems",
+      "IEEE Transactions on Dependable and Secure Computing"
     ]
-  }
+  },
+  "positions": [
+    {
+      "year": "2020",
+      "positions": [
+        "Badminton Coordinator of IIT Patna",
+        "Advisor of NJACK (Computer Science Club of IIT Patna)"
+      ]
+    },
+    {
+      "year": "2019",
+      "positions": [
+        "Badminton Coordinator of IIT Patna",
+        "Coordinator, Events and Operation of Celesta (Technical Fest of IIT Patna)",
+        "Coordinator, Technical Affairs of Anwesha (Cultural Fest of IIT Patna)"
+      ]
+    }
+  ]
+}

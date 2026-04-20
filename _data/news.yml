@@ -2,6 +2,9 @@
 # Add your news items here in reverse chronological order (newest first)
 # Each item should have a date and content field
 
+- date: 2026-04-14
+  content: "Our paper '[Debiasing Diffusion Models via Score Guidance](https://openreview.net/forum?id=vAz8xUHyTe)' is now accepted [Transactions on Machine Learning Research (TMLR)](https://jmlr.org/tmlr/)."
+
 - date: 2025-07-28
   content: "I have joined [Google DeepMind](https://deepmind.google/) as a Student Researcher!"
 

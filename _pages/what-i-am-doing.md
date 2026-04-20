@@ -7,19 +7,69 @@ nav: false
 nav_order: 6
 ---
 
-<!-- Current Activity -->
 <div class="timeline-item">
-  <div class="timeline-time">July 2025 - Present</div>
+  <div class="timeline-time">Feb 2026 - Present</div>
   <div class="timeline-indicator current"></div>
   <div class="timeline-connector"></div>
   <div class="timeline-card current">
     <div class="activity-header">
-      <h3>Student Researcher at Google DeepMind</h3>
+      <h3>Vision Tasks using MLLMs and Safe Sampling in LLMs</h3>
       <span class="activity-status">Current</span>
     </div>
     <div class="activity-period">
       <i class="fas fa-calendar"></i>
-      July 2025 - Present
+      Feb 2026 - Present
+    </div>
+    
+    <!-- Gist -->
+    <div class="activity-gist">
+      Working on two parallel threads - 
+      <ol>
+        <li>Exploring to what extent can we use LLMs for vision tasks</li>
+        <li>How can we make LLMs safer via sampling strategies</li>
+      </ol>
+    </div>
+    
+    <!-- Publications -->
+    <div class="activity-publications">
+      <h4><i class="fas fa-file-alt"></i>Representative Publications</h4>
+      <ul class="publication-list">
+        <li>
+          <a href="#">TBA</a>
+          <span class="pub-venue">TBA</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Expandable Details -->
+    <div class="activity-details">
+      <div class="details-toggle">
+        <span>Show me more</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="details-content">
+        <div class="details-inner">
+          <p>Does this sound interesting? Reach out to me!</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Current Activity -->
+<div class="timeline-item">
+  <div class="timeline-time">July 2025 - Jan 2026</div>
+  <div class="timeline-indicator"></div>
+  <div class="timeline-connector"></div>
+  <div class="timeline-card">
+    <div class="activity-header">
+      <h3>Student Researcher at Google DeepMind</h3>
+      <!-- <span class="activity-status">Current</span> -->
+    </div>
+    <div class="activity-period">
+      <i class="fas fa-calendar"></i>
+      July 2025 - Jan 2026
     </div>
     
     <!-- Gist -->
