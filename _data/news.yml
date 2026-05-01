@@ -3,7 +3,7 @@
 # Each item should have a date and content field
 
 - date: 2026-05-02
-  content: "My work during Google DeepMind- '[MAgSeg: Segmentation of Agricultural Landscapes in High-Resolution Satellite Imagery using Multimodal Large Language Models](https://backpropagator.github.io/)' is now accepted [International Joint Conference on Artificial Intelligence (IJCAI-ECAI)](https://2026.ijcai.org/)."
+  content: "My work as SR at Google DeepMind- '[MAgSeg: Segmentation of Agricultural Landscapes in High-Resolution Satellite Imagery using Multimodal Large Language Models](https://backpropagator.github.io/)' is now accepted [International Joint Conference on Artificial Intelligence (IJCAI-ECAI)](https://2026.ijcai.org/)."
 
 - date: 2026-04-14
   content: "Our paper '[Debiasing Diffusion Models via Score Guidance](https://openreview.net/forum?id=vAz8xUHyTe)' is now accepted [Transactions on Machine Learning Research (TMLR)](https://jmlr.org/tmlr/)."
