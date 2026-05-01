@@ -74,7 +74,7 @@ nav_order: 6
     
     <!-- Gist -->
     <div class="activity-gist">
-      Joined the AnthroKrishi team at Google DeepMind as a student researcher, focusing on field and agricultural body segmentation from raw satellite data (RSD) using vision-language models (vLLMs). I was responsible for integrating Gemini for directly segmenting RSD and developing evaluation pipelines to assess model performance against established benchmarks.
+      Joined the AnthroKrishi team at Google DeepMind as a student researcher, focusing on field and agricultural body segmentation from raw satellite data (RSD) using Multimodal LLMs (MLLMs). I was partly responsible for integrating Gemini for directly segmenting RSD and developing evaluation pipelines to assess model performance against established benchmarks.
     </div>
     
     <!-- Publications -->
@@ -82,8 +82,8 @@ nav_order: 6
       <h4><i class="fas fa-file-alt"></i>Representative Publications</h4>
       <ul class="publication-list">
         <li>
-          <a href="#">TBA</a>
-          <span class="pub-venue">TBA</span>
+          <a href="#">MAgSeg: Segmentation of Agricultural Landscapes in High-Resolution Satellite Imagery using Multimodal Large Language Models</a>
+          <span class="pub-venue">IJCAI 2026</span>
         </li>
       </ul>
     </div>
@@ -96,7 +96,7 @@ nav_order: 6
       </div>
       <div class="details-content">
         <div class="details-inner">
-          <p>I joined Google DeepMind as a student researcher, at AnthroKrishi Team. The main goal of my project was to see if we can directly use vLLMs (e.g., Gemini, Gemma3, etc) for segmentation <strong>without</strong> any additional image/pixel decoder. This is an important distinction as there are several methods that leverage decoder head over LLM tokens for segmentation. These methods offer the luxury of using pixel-level segmentation loss directly to fine-tune the model. However, the problem becomes much harder and raises some tough questions such as -  <em>how do you represent a segmentation mask using tokens?</em>, <em>do you use polygons to represent each mask?</em>, <em>what about the limit on token length?</em></p>
+          <p>I joined Google DeepMind as a student researcher, at AnthroKrishi Team. The main goal of my project was to see if we can directly use MLLMs (e.g., Gemini, Gemma3, etc) for segmentation <strong>without</strong> any additional image/pixel decoder. This is an important distinction as there are several methods that leverage decoder head over LLM tokens for segmentation. These methods offer the luxury of using pixel-level segmentation loss directly to fine-tune the model. However, the problem becomes much harder and raises some tough questions such as -  <em>how do you represent a segmentation mask using tokens?</em>, <em>do you use polygons to represent each mask?</em>, <em>what about the limit on token length?</em></p>
           <p>There are few methods along this line. A prominent one being <a href="https://arxiv.org/abs/2410.09855">Text4Seg</a>, however, these methods fail to scale for high resolution RSD images. I was responsible for solving this problems using several innovations such as leveraging multi-scale segmentation masks and GRPO-based post-training. These changes led to an improvement of ~16% on RSD data compared to existing baselines.</p>
         </div>
       </div>
@@ -166,7 +166,7 @@ nav_order: 6
       <ul class="publication-list">
         <li>
           <a href="#">Debiasing Diffusion Models via Score Guidance</a>
-          <span class="pub-venue">Under Submission</span>
+          <span class="pub-venue">TMLR, 2026</span>
         </li>
         <li>
           <a href="#">Adapt then Unlearn: Exploring Parameter Space Semantics for Unlearning in Generative Adversarial Networks</a>
