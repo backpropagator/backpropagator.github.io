@@ -1,0 +1,320 @@
+<!-- _includes/pub_stats.liquid -->
+{% assign journal_count = site.data.pub_counts.journal | default: 0 %}
+{% assign conference_count = site.data.pub_counts.conference | default: 0 %}
+{% assign workshop_count = site.data.pub_counts.workshop | default: 0 %}
+{% assign other_count = site.data.pub_counts.other | default: 0 %}
+{% assign total_count = site.data.pub_counts.total | default: 0 %}
+
+<div class="pub-stats-container">
+  <div class="row text-center justify-content-center">
+    <!-- Card 1: Total -->
+    <div class="col-6 col-md-3 mb-3">
+      <div class="pub-stat-card active" data-filter="all" onclick="filterPublications('all', this)">
+        <div class="pub-stat-icon">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="pub-stat-number">{{ total_count }}</div>
+        <div class="pub-stat-label">Total Publications</div>
+      </div>
+    </div>
+    
+    <!-- Card 2: Journals -->
+    <div class="col-6 col-md-3 mb-3">
+      <div class="pub-stat-card journal-card" data-filter="pub-journal" onclick="filterPublications('pub-journal', this)">
+        <div class="pub-stat-icon">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <div class="pub-stat-number">{{ journal_count }}</div>
+        <div class="pub-stat-label">Journals</div>
+      </div>
+    </div>
+
+    <!-- Card 3: Conferences -->
+    <div class="col-6 col-md-3 mb-3">
+      <div class="pub-stat-card conference-card" data-filter="pub-conference" onclick="filterPublications('pub-conference', this)">
+        <div class="pub-stat-icon">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div class="pub-stat-number">{{ conference_count }}</div>
+        <div class="pub-stat-label">Conferences</div>
+      </div>
+    </div>
+
+    <!-- Card 4: Workshops -->
+    <div class="col-6 col-md-3 mb-3">
+      <div class="pub-stat-card workshop-card" data-filter="pub-workshop" onclick="filterPublications('pub-workshop', this)">
+        <div class="pub-stat-icon">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <div class="pub-stat-number">{{ workshop_count }}</div>
+        <div class="pub-stat-label">Workshops</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Stats Container Layout */
+.pub-stats-container {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Glassmorphism Stat Cards Base Styling */
+.pub-stat-card {
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Micro-animations and Glow Effects */
+.pub-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  transition: background 0.35s ease;
+}
+
+/* Specific Card Themes & Colors */
+/* Total Card */
+.pub-stat-card[data-filter="all"]::before {
+  background: linear-gradient(90deg, #6c757d, #adb5bd);
+}
+.pub-stat-card[data-filter="all"]:hover, 
+.pub-stat-card[data-filter="all"].active {
+  box-shadow: 0 10px 20px rgba(108, 117, 125, 0.15);
+  border-color: #adb5bd;
+  transform: translateY(-4px);
+}
+.pub-stat-card[data-filter="all"] .pub-stat-icon i {
+  color: #6c757d;
+}
+
+/* Journal Card - Violet/Indigo */
+.pub-stat-card.journal-card::before {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+}
+.pub-stat-card.journal-card:hover,
+.pub-stat-card.journal-card.active {
+  box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);
+  border-color: #a78bfa;
+  transform: translateY(-4px);
+}
+.pub-stat-card.journal-card .pub-stat-icon i {
+  color: #7c3aed;
+}
+
+/* Conference Card - Coral/Rose */
+.pub-stat-card.conference-card::before {
+  background: linear-gradient(90deg, #f43f5e, #fda4af);
+}
+.pub-stat-card.conference-card:hover,
+.pub-stat-card.conference-card.active {
+  box-shadow: 0 10px 20px rgba(244, 63, 94, 0.2);
+  border-color: #fda4af;
+  transform: translateY(-4px);
+}
+.pub-stat-card.conference-card .pub-stat-icon i {
+  color: #f43f5e;
+}
+
+/* Workshop Card - Teal/Emerald */
+.pub-stat-card.workshop-card::before {
+  background: linear-gradient(90deg, #0d9488, #5eead4);
+}
+.pub-stat-card.workshop-card:hover,
+.pub-stat-card.workshop-card.active {
+  box-shadow: 0 10px 20px rgba(13, 148, 136, 0.2);
+  border-color: #5eead4;
+  transform: translateY(-4px);
+}
+.pub-stat-card.workshop-card .pub-stat-icon i {
+  color: #0d9488;
+}
+
+/* Card Elements styling */
+.pub-stat-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.pub-stat-card:hover .pub-stat-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.pub-stat-number {
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--global-text-color);
+  margin-bottom: 0.25rem;
+}
+
+.pub-stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--global-text-color-light);
+  text-align: center;
+}
+
+/* Active State styling */
+.pub-stat-card.active {
+  background: rgba(94, 114, 228, 0.05);
+}
+
+/* Hide transitions for filtered bibliography entries */
+ol.bibliography li {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+ol.bibliography li.filtered-out {
+  display: none !important;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Hide transition for empty year headers */
+h2.year {
+  transition: opacity 0.3s ease, margin 0.3s ease;
+}
+h2.year.filtered-out {
+  display: none !important;
+}
+</style>
+
+<script>
+function filterPublications(type, clickedCard) {
+  // 1. Manage Active Card Styling
+  const cards = document.querySelectorAll('.pub-stat-card');
+  const isActive = clickedCard.classList.contains('active');
+
+  // Clear active class from all cards
+  cards.forEach(card => card.classList.remove('active'));
+
+  // If the user clicks an already active card, toggle back to 'all'
+  let targetFilter = type;
+  if (isActive && type !== 'all') {
+    targetFilter = 'all';
+    const allCard = document.querySelector('.pub-stat-card[data-filter="all"]');
+    if (allCard) allCard.classList.add('active');
+  } else {
+    clickedCard.classList.add('active');
+  }
+
+  // 2. Perform Filtering on bibliography items
+  const items = document.querySelectorAll('ol.bibliography li');
+  
+  items.forEach(li => {
+    const row = li.querySelector('.row');
+    if (!row) return;
+    
+    const entryType = row.getAttribute('data-entrytype');
+    
+    if (targetFilter === 'all' || entryType === targetFilter) {
+      li.classList.remove('filtered-out');
+    } else {
+      li.classList.add('filtered-out');
+    }
+  });
+
+  // 3. Perform Filtering on Year Headers
+  const bibContainer = document.querySelector('.publications');
+  if (bibContainer) {
+    const children = Array.from(bibContainer.children);
+    let currentHeader = null;
+    let hasVisibleItems = false;
+    
+    children.forEach(child => {
+      // In jekyll-scholar, years are usually h2 elements containing the year
+      if (child.tagName === 'H2') {
+        if (currentHeader) {
+          if (hasVisibleItems) {
+            currentHeader.classList.remove('filtered-out');
+          } else {
+            currentHeader.classList.add('filtered-out');
+          }
+        }
+        currentHeader = child;
+        hasVisibleItems = false;
+      } else if (child.tagName === 'OL' && child.classList.contains('bibliography')) {
+        const lis = child.querySelectorAll('li');
+        lis.forEach(li => {
+          if (!li.classList.contains('filtered-out')) {
+            hasVisibleItems = true;
+          }
+        });
+      }
+    });
+    
+    if (currentHeader) {
+      if (hasVisibleItems) {
+        currentHeader.classList.remove('filtered-out');
+      } else {
+        currentHeader.classList.add('filtered-out');
+      }
+    }
+  }
+}
+
+// Compute counts dynamically from DOM to act as a robust fallback/override
+function initPubStats() {
+  const items = document.querySelectorAll('ol.bibliography li [data-entrytype]');
+  
+  let journalCount = 0;
+  let conferenceCount = 0;
+  let workshopCount = 0;
+  let otherCount = 0;
+
+  items.forEach(el => {
+    const type = el.getAttribute('data-entrytype');
+    if (type === 'pub-journal') {
+      journalCount++;
+    } else if (type === 'pub-conference') {
+      conferenceCount++;
+    } else if (type === 'pub-workshop') {
+      workshopCount++;
+    } else if (type === 'pub-other') {
+      otherCount++;
+    }
+  });
+
+  const totalCount = journalCount + conferenceCount + workshopCount + otherCount;
+
+  // Update DOM elements with correct counts
+  const totalCardNum = document.querySelector('.pub-stat-card[data-filter="all"] .pub-stat-number');
+  const journalCardNum = document.querySelector('.pub-stat-card[data-filter="pub-journal"] .pub-stat-number');
+  const conferenceCardNum = document.querySelector('.pub-stat-card[data-filter="pub-conference"] .pub-stat-number');
+  const workshopCardNum = document.querySelector('.pub-stat-card[data-filter="pub-workshop"] .pub-stat-number');
+
+  if (totalCardNum) totalCardNum.textContent = totalCount;
+  if (journalCardNum) journalCardNum.textContent = journalCount;
+  if (conferenceCardNum) conferenceCardNum.textContent = conferenceCount;
+  if (workshopCardNum) workshopCardNum.textContent = workshopCount;
+}
+
+// Register initialization on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPubStats);
+} else {
+  initPubStats();
+}
+</script>

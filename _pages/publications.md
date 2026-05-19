@@ -15,6 +15,8 @@ show_research_map_fab: true
 
 {% include bib_search.liquid %}
 
+{% include pub_stats.liquid %}
+
 <div class="publications">
 
 {% bibliography %}

@@ -1,6 +1,21 @@
 ---
 ---
-<div class="row">
+{% assign entry_class = "" %}
+{% if entry.type == 'article' %}
+  {% assign entry_class = "pub-journal" %}
+{% elsif entry.type == 'inproceedings' %}
+  {% assign entry_title_lower = entry.booktitle | downcase %}
+  {% assign entry_abbr_lower = entry.abbr | downcase %}
+  {% if entry_title_lower contains 'workshop' or entry_abbr_lower contains 'workshop' %}
+    {% assign entry_class = "pub-workshop" %}
+  {% else %}
+    {% assign entry_class = "pub-conference" %}
+  {% endif %}
+{% else %}
+  {% assign entry_class = "pub-other" %}
+{% endif %}
+
+<div class="row" data-entrytype="{{ entry_class }}">
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-3 abbr">
       {%- if entry.abbr -%}

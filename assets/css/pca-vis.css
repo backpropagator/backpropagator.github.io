@@ -1,0 +1,357 @@
+/* PCA Interactive Visualizer Style */
+
+.pca-vis-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 32px 0;
+  padding: 24px;
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  font-family: inherit;
+  color: var(--global-text-color);
+  transition: all 0.3s ease;
+}
+
+/* Glassmorphism overlay in dark mode */
+html[data-theme="dark"] .pca-vis-container {
+  background: rgba(26, 31, 46, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pca-vis-canvas-area {
+  flex: 1 1 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.pca-vis-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
+  background-color: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+html[data-theme="dark"] .pca-vis-canvas-wrapper {
+  background-color: #0c0e14;
+}
+
+.pca-vis-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+.pca-vis-controls {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pca-vis-section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--global-divider-color);
+  padding-bottom: 6px;
+  color: var(--global-theme-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Presets Grid */
+.pca-vis-presets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pca-preset-btn {
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--global-text-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.pca-preset-btn:hover {
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color) !important;
+  border-color: var(--global-theme-color);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.pca-preset-btn.active {
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color) !important;
+  border-color: var(--global-theme-color);
+}
+
+/* Special Clear Button */
+.pca-clear-btn {
+  border-color: rgba(245, 54, 92, 0.4);
+  color: #f5365c;
+}
+
+.pca-clear-btn:hover {
+  background: #f5365c;
+  color: #fff !important;
+  border-color: #f5365c;
+}
+
+/* Slider and Play Panel */
+.pca-projection-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+html[data-theme="dark"] .pca-projection-panel {
+  background: rgba(12, 14, 20, 0.3);
+}
+
+.pca-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pca-slider-label {
+  flex: 0 0 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.pca-slider-input {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--global-divider-color);
+  outline: none;
+  -webkit-appearance: none;
+  accent-color: var(--global-theme-color);
+}
+
+.pca-slider-val {
+  flex: 0 0 40px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  text-align: right;
+  font-weight: 700;
+}
+
+.pca-anim-btn {
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color) !important;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  margin-top: 4px;
+}
+
+.pca-anim-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Matrix Display */
+.pca-matrix-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.pca-matrix-wrapper {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(2, 65px);
+  gap: 10px;
+  padding: 8px 18px;
+}
+
+.pca-matrix-wrapper::before,
+.pca-matrix-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  border: 2px solid var(--global-text-color);
+}
+
+.pca-matrix-wrapper::before {
+  left: 6px;
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+}
+
+.pca-matrix-wrapper::after {
+  right: 6px;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+}
+
+.pca-matrix-cell {
+  width: 65px;
+  height: 34px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-family: monospace;
+  font-weight: bold;
+  border: 1px solid var(--global-divider-color);
+  background-color: var(--global-bg-color);
+  color: var(--global-text-color);
+  border-radius: var(--radius-sm);
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Info Readout & Dynamic Badges */
+.pca-stats-panel {
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+html[data-theme="dark"] .pca-stats-panel {
+  background: rgba(12, 14, 20, 0.4);
+}
+
+.pca-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--global-divider-color);
+  padding-bottom: 6px;
+}
+
+.pca-stat-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pca-stat-label {
+  font-weight: 600;
+  color: var(--global-text-color-light);
+}
+
+.pca-stat-val {
+  font-family: monospace;
+  font-weight: 700;
+  color: var(--global-text-color);
+}
+
+/* Highlight badge for variance explained */
+.pca-variance-badge {
+  color: var(--global-theme-color);
+  font-weight: 800;
+}
+
+/* Vector legend indicator */
+.pca-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pca-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.pca-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* Instruction Box */
+.pca-instruction-box {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--global-text-color-light);
+  border-left: 3px solid var(--global-theme-color);
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+/* Tooltip overlay on canvas */
+.pca-canvas-tooltip {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Mobile optimizations */
+@media (max-width: 820px) {
+  .pca-vis-container {
+    flex-direction: column;
+  }
+  .pca-vis-canvas-area {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  .pca-vis-controls {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
